@@ -1,0 +1,455 @@
+import React, { useState } from 'react';
+import { X, Send, CheckCircle2, User, Building, Phone, Globe, HelpCircle, Mail, Clock } from 'lucide-react';
+
+const BENEFITS = [
+  { title: 'Expert Consultation', desc: 'Tailored solutions for your unique needs.' },
+  { title: 'Confidential & Secure', desc: 'Your formulation IP is safe with us.' },
+  { title: 'End-to-End Support', desc: 'From laboratory concept to factory shelf.' },
+  { title: 'Global Reach', desc: 'Supporting brands across 20+ countries.' }
+];
+
+const RESPONSES = [
+  { time: '24 Hours', desc: 'For general inquiries' },
+  { time: '1-2 Days', desc: 'For consult requests' },
+  { time: '3-5 Days', desc: 'For detailed proposals' },
+  { time: 'Long-Term', desc: 'Partnership & trust' }
+];
+
+export default function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    phone: '',
+    country: '',
+    interest: '',
+    project: ''
+  });
+
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+    if (formErrors[name]) {
+      setFormErrors({
+        ...formErrors,
+        [name]: ''
+      });
+    }
+  };
+
+  const validateForm = () => {
+    const errors = {};
+    if (!formData.name.trim()) errors.name = 'Full name is required';
+    if (!formData.email.trim()) {
+      errors.email = 'Email address is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      errors.email = 'Email address is invalid';
+    }
+    if (!formData.company.trim()) errors.company = 'Company name is required';
+    if (!formData.country) errors.country = 'Country selection is required';
+    if (!formData.interest) errors.interest = 'Area of interest is required';
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      setIsSubmitted(true);
+    }
+  };
+
+  const handleReset = () => {
+    setFormData({
+      name: '',
+      email: '',
+      company: '',
+      phone: '',
+      country: '',
+      interest: '',
+      project: ''
+    });
+    setFormErrors({});
+    setIsSubmitted(false);
+  };
+
+  return (
+    <section id="contact" style={{
+      background: '#fbfaf7',
+      padding: '80px 40px',
+      borderBottom: '1px solid rgba(181, 137, 59, 0.1)'
+    }}>
+      <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '50px' }}>
+        
+        {/* Main Content Info */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1.1fr 0.9fr',
+          gap: '50px',
+          alignItems: 'start'
+        }} className="contact-grid">
+          
+          {/* Left Column: Text & Benefits */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '25px', textAlign: 'left' }}>
+            <span style={{ fontSize: '13px', fontWeight: '700', color: '#b5893b', letterSpacing: '2px', textTransform: 'uppercase' }}>
+              Get In Touch
+            </span>
+            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '42px', color: '#1b0b30', fontWeight: '600', margin: 0, lineHeight: 1.2 }}>
+              Let's Create the Future <br />
+              of Beauty, Together
+            </h2>
+            <p style={{ fontSize: '16px', color: '#5c526b', lineHeight: '1.6', maxWidth: '560px', margin: 0 }}>
+              Share your project goals with us and our experts will connect with you to explore how we can bring your vision to life with precision, innovation, and care.
+            </p>
+
+            {/* Benefits mini-grid */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '20px',
+              marginTop: '10px'
+            }} className="contact-benefits">
+              {BENEFITS.map((b, idx) => (
+                <div key={idx} style={{
+                  background: 'white',
+                  border: '1px solid #e2dfd8',
+                  borderRadius: '8px',
+                  padding: '15px',
+                  boxShadow: '0 4px 10px rgba(0,0,0,0.01)'
+                }}>
+                  <strong style={{ fontSize: '14px', color: '#1b0b30', display: 'block', marginBottom: '4px' }}>{b.title}</strong>
+                  <span style={{ fontSize: '12px', color: '#7c728a', lineHeight: '1.3' }}>{b.desc}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Cropped Flasks image */}
+            <div style={{ marginTop: '10px' }}>
+              <img 
+                src="/images/assets/contact_flasks.png" 
+                alt="EGC cosmetics formulating lab glassware" 
+                style={{ width: '100%', maxWidth: '480px', height: 'auto', borderRadius: '12px', boxShadow: '0 5px 15px rgba(0,0,0,0.02)' }}
+              />
+            </div>
+          </div>
+
+          {/* Right Column: styled HTML form */}
+          <div style={{
+            background: 'white',
+            border: '1px solid #e2dfd8',
+            borderRadius: '16px',
+            padding: '40px',
+            boxShadow: '0 10px 30px rgba(27, 11, 48, 0.04)',
+            textAlign: 'left'
+          }}>
+            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '24px', color: '#1b0b30', marginBottom: '8px' }}>
+              Send Us a Message
+            </h3>
+            <p style={{ fontSize: '13px', color: '#7c728a', marginBottom: '25px' }}>
+              Fill out the form and our team will get back to you shortly.
+            </p>
+
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              
+              {/* Name & Email Row */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }} className="form-row">
+                <div style={{ position: 'relative' }}>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    style={{
+                      width: '100%',
+                      padding: '12px 12px 12px 35px',
+                      border: '1px solid #e2dfd8',
+                      borderRadius: '6px',
+                      fontSize: '14px',
+                      outline: 'none'
+                    }}
+                    placeholder="Full Name *"
+                    required
+                  />
+                  <User size={16} style={{ position: 'absolute', left: '12px', top: '15px', color: '#7c728a' }} />
+                  {formErrors.name && <span style={{ fontSize: '10px', color: '#c62828', display: 'block', marginTop: '3px' }}>{formErrors.name}</span>}
+                </div>
+                <div style={{ position: 'relative' }}>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    style={{
+                      width: '100%',
+                      padding: '12px 12px 12px 35px',
+                      border: '1px solid #e2dfd8',
+                      borderRadius: '6px',
+                      fontSize: '14px',
+                      outline: 'none'
+                    }}
+                    placeholder="Email Address *"
+                    required
+                  />
+                  <Mail size={16} style={{ position: 'absolute', left: '12px', top: '15px', color: '#7c728a' }} />
+                  {formErrors.email && <span style={{ fontSize: '10px', color: '#c62828', display: 'block', marginTop: '3px' }}>{formErrors.email}</span>}
+                </div>
+              </div>
+
+              {/* Company & Phone Row */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }} className="form-row">
+                <div style={{ position: 'relative' }}>
+                  <input
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    style={{
+                      width: '100%',
+                      padding: '12px 12px 12px 35px',
+                      border: '1px solid #e2dfd8',
+                      borderRadius: '6px',
+                      fontSize: '14px',
+                      outline: 'none'
+                    }}
+                    placeholder="Company Name *"
+                    required
+                  />
+                  <Building size={16} style={{ position: 'absolute', left: '12px', top: '15px', color: '#7c728a' }} />
+                  {formErrors.company && <span style={{ fontSize: '10px', color: '#c62828', display: 'block', marginTop: '3px' }}>{formErrors.company}</span>}
+                </div>
+                <div style={{ position: 'relative' }}>
+                  <input
+                    type="text"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    style={{
+                      width: '100%',
+                      padding: '12px 12px 12px 35px',
+                      border: '1px solid #e2dfd8',
+                      borderRadius: '6px',
+                      fontSize: '14px',
+                      outline: 'none'
+                    }}
+                    placeholder="Phone Number"
+                  />
+                  <Phone size={16} style={{ position: 'absolute', left: '12px', top: '15px', color: '#7c728a' }} />
+                </div>
+              </div>
+
+              {/* Country Select */}
+              <div style={{ position: 'relative' }}>
+                <select
+                  name="country"
+                  value={formData.country}
+                  onChange={handleInputChange}
+                  style={{
+                    width: '100%',
+                    padding: '12px 12px 12px 35px',
+                    border: '1px solid #e2dfd8',
+                    borderRadius: '6px',
+                    fontSize: '14px',
+                    outline: 'none',
+                    background: 'white',
+                    cursor: 'pointer'
+                  }}
+                  required
+                >
+                  <option value="" disabled>Select Country / Region *</option>
+                  <option value="USA">United States</option>
+                  <option value="Europe">Europe (EU)</option>
+                  <option value="India">India</option>
+                  <option value="Singapore">Singapore</option>
+                  <option value="UAE">United Arab Emirates</option>
+                  <option value="Other">Other Region</option>
+                </select>
+                <Globe size={16} style={{ position: 'absolute', left: '12px', top: '15px', color: '#7c728a', zIndex: 5 }} />
+                {formErrors.country && <span style={{ fontSize: '10px', color: '#c62828', display: 'block', marginTop: '3px' }}>{formErrors.country}</span>}
+              </div>
+
+              {/* Area of Interest */}
+              <div style={{ position: 'relative' }}>
+                <select
+                  name="interest"
+                  value={formData.interest}
+                  onChange={handleInputChange}
+                  style={{
+                    width: '100%',
+                    padding: '12px 12px 12px 35px',
+                    border: '1px solid #e2dfd8',
+                    borderRadius: '6px',
+                    fontSize: '14px',
+                    outline: 'none',
+                    background: 'white',
+                    cursor: 'pointer'
+                  }}
+                  required
+                >
+                  <option value="" disabled>Select Area of Interest *</option>
+                  <option value="R&D Formulation">Cosmetic R&D & Formulation</option>
+                  <option value="Factory Setup">Plant Setup & Factory Planning</option>
+                  <option value="Turnkey Solutions">Turnkey Project Solutions</option>
+                  <option value="Regulatory Standards">Regulatory, BIS & FDA Compliance</option>
+                  <option value="All of the above">Full-Scale Advisory Suite</option>
+                </select>
+                <HelpCircle size={16} style={{ position: 'absolute', left: '12px', top: '15px', color: '#7c728a', zIndex: 5 }} />
+                {formErrors.interest && <span style={{ fontSize: '10px', color: '#c62828', display: 'block', marginTop: '3px' }}>{formErrors.interest}</span>}
+              </div>
+
+              {/* Message */}
+              <div>
+                <textarea
+                  name="project"
+                  value={formData.project}
+                  onChange={handleInputChange}
+                  style={{
+                    width: '100%',
+                    height: '110px',
+                    padding: '12px',
+                    border: '1px solid #e2dfd8',
+                    borderRadius: '6px',
+                    fontSize: '14px',
+                    outline: 'none',
+                    resize: 'none'
+                  }}
+                  placeholder="Tell us about your project..."
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                style={{
+                  padding: '14px',
+                  background: '#b5893b',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '6px',
+                  fontWeight: '600',
+                  fontSize: '15px',
+                  cursor: 'pointer',
+                  transition: 'background 0.2s',
+                  boxShadow: '0 4px 12px rgba(181, 137, 59, 0.2)'
+                }}
+                onMouseEnter={(e) => e.target.style.background = '#9c732c'}
+                onMouseLeave={(e) => e.target.style.background = '#b5893b'}
+              >
+                Submit Inquiry
+              </button>
+
+            </form>
+          </div>
+        </div>
+
+        {/* Bottom response time info row & right packaging image */}
+        <div style={{
+          marginTop: '30px',
+          borderTop: '1px solid rgba(181, 137, 59, 0.2)',
+          paddingTop: '50px',
+          display: 'grid',
+          gridTemplateColumns: '1.2fr 0.8fr',
+          gap: '40px',
+          alignItems: 'center'
+        }} className="contact-footer-grid">
+          
+          <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <h4 style={{ fontSize: '16px', fontWeight: 'bold', color: '#1b0b30', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Clock size={18} style={{ color: '#b5893b' }} />
+              We Typically Respond Within
+            </h4>
+            
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '15px'
+            }} className="response-time-grid">
+              {RESPONSES.map((res, i) => (
+                <div key={i} style={{ borderRight: i < 3 ? '1px solid #e2dfd8' : 'none', paddingRight: '10px' }}>
+                  <span style={{ fontSize: '18px', fontWeight: '800', color: '#b5893b', display: 'block' }}>{res.time}</span>
+                  <span style={{ fontSize: '11px', color: '#7c728a', lineHeight: 1.3 }}>{res.desc}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <img 
+              src="/images/assets/contact_factory.png" 
+              alt="EGC cosmetics sterile packaging manufacturing line" 
+              style={{ width: '100%', maxWidth: '380px', height: 'auto', borderRadius: '12px' }}
+            />
+          </div>
+        </div>
+
+      </div>
+
+      {/* Success Modal */}
+      {isSubmitted && (
+        <div className="modal-overlay" onClick={handleReset}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '500px', textAlign: 'center', padding: '40px' }}>
+            <div style={{ display: 'inline-flex', background: '#e8f5e9', padding: '16px', borderRadius: '50%', color: '#2e7d32', marginBottom: '20px' }}>
+              <CheckCircle2 size={48} />
+            </div>
+            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '24px', color: '#1b0b30', marginBottom: '10px' }}>
+              Inquiry Submitted!
+            </h3>
+            <p style={{ fontSize: '15px', color: '#7c728a', lineHeight: '1.6', marginBottom: '25px', textAlign: 'center' }}>
+              Thank you, <strong>{formData.name}</strong>. EGC Ekora Global Consulting has received your request regarding <strong>{formData.interest}</strong>. Our senior advisors will review your project and contact you at <strong>{formData.email}</strong> within 1-2 business days.
+            </p>
+            <button
+              onClick={handleReset}
+              style={{
+                padding: '12px 24px',
+                background: '#b5893b',
+                color: '#fbfaf7',
+                border: 'none',
+                borderRadius: '6px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'background 0.2s'
+              }}
+            >
+              Close Window
+            </button>
+          </div>
+        </div>
+      )}
+
+      <style>{`
+        @media (max-width: 900px) {
+          .contact-grid {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+          .contact-footer-grid {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+          .response-time-grid {
+            grid-template-columns: 1fr 1fr !important;
+          }
+          .response-time-grid > div {
+            border-right: none !important;
+            border-bottom: 1px solid #e2dfd8;
+            padding-bottom: 10px;
+          }
+        }
+        @media (max-width: 500px) {
+          .form-row {
+            grid-template-columns: 1fr !important;
+          }
+          .contact-benefits {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+    </section>
+  );
+}
