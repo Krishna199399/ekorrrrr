@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { X, Award, ShieldAlert, ArrowUp, Mail, Phone, Globe, Calendar, FileText } from 'lucide-react';
+import { X, Award, ShieldAlert, ArrowUp, Mail, Phone, Globe, Calendar, FileText, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import logoWhite from '../assets/logo_white.png';
 
 const CERT_DETAILS = {
   gmp: {
@@ -55,81 +57,7 @@ export default function Footer() {
   return (
     <footer style={{ background: '#1b0b30', color: 'rgba(255, 255, 255, 0.7)', fontSize: '13px' }}>
       
-      {/* 1. Upper CTA Row: Ready to get started */}
-      <div style={{
-        background: 'radial-gradient(circle at right, rgba(181,137,59,0.06) 0%, transparent 60%), #fbfaf7',
-        color: '#1b0b30',
-        padding: '60px 40px',
-        borderBottom: '1px solid rgba(181, 137, 59, 0.2)'
-      }}>
-        <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '40px', alignItems: 'center' }} className="footer-cta-grid">
-          
-          {/* Left Text */}
-          <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '15px' }}>
-            <span style={{ fontSize: '12px', fontWeight: 'bold', color: '#b5893b', letterSpacing: '1px', textTransform: 'uppercase' }}>
-              Ready to Get Started?
-            </span>
-            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '36px', color: '#1b0b30', fontWeight: '600', margin: 0, lineHeight: 1.2 }}>
-              Your Vision. Our Expertise. <br />
-              Extraordinary Results.
-            </h3>
-            <p style={{ fontSize: '15px', color: '#5c526b', lineHeight: '1.5', maxWidth: '580px', margin: 0 }}>
-              From concept to creation, from local success to global impact — we're your end-to-end partner in building and growing exceptional beauty brands.
-            </p>
-            <div style={{ display: 'flex', gap: '15px', marginTop: '10px' }} className="footer-cta-buttons">
-              <button
-                onClick={handleScrollToContact}
-                style={{
-                  padding: '12px 24px',
-                  background: '#b5893b',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '6px',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  transition: 'background 0.2s'
-                }}
-                onMouseEnter={(e) => e.target.style.background = '#9c732c'}
-                onMouseLeave={(e) => e.target.style.background = '#b5893b'}
-              >
-                Schedule a Consultation
-              </button>
-              <a
-                href="/images/1.png"
-                download="EGC_Profile.png"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '12px 24px',
-                  background: 'white',
-                  color: '#1b0b30',
-                  border: '1px solid #1b0b30',
-                  borderRadius: '6px',
-                  fontWeight: '600',
-                  textDecoration: 'none',
-                  cursor: 'pointer',
-                  transition: 'background 0.2s'
-                }}
-                onMouseEnter={(e) => e.target.style.background = '#f0edf5'}
-                onMouseLeave={(e) => e.target.style.background = 'white'}
-              >
-                <FileText size={14} style={{ color: '#b5893b' }} />
-                Download Company Profile
-              </a>
-            </div>
-          </div>
 
-          {/* Right Image */}
-          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <img 
-              src="/images/assets/footer_bottles.png" 
-              alt="EGC organic facial serums and toner formulation line" 
-              style={{ width: '100%', maxWidth: '380px', height: 'auto', borderRadius: '12px' }}
-            />
-          </div>
-        </div>
-      </div>
 
       {/* 2. Middle Row: Newsletter Signup */}
       <div style={{
@@ -208,14 +136,15 @@ export default function Footer() {
           
           {/* Logo & Description */}
           <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <svg viewBox="0 0 100 100" style={{ width: '36px', height: '36px', fill: '#b5893b' }}>
-                <path d="M50 15 C35 30, 20 45, 20 60 C20 75, 30 85, 50 85 C70 85, 80 75, 80 60 C80 45, 65 30, 50 15 Z M50 25 C60 38, 72 50, 72 60 C72 70, 62 77, 50 77 C38 77, 28 70, 28 60 C28 50, 40 38, 50 25 Z" />
-              </svg>
-              <div>
-                <span style={{ fontFamily: 'var(--font-serif)', fontSize: '18px', fontWeight: 'bold', color: '#b5893b', letterSpacing: '1px', display: 'block', lineHeight: 1.1 }}>EGC</span>
-                <span style={{ fontSize: '7px', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Ekora Global Consulting</span>
-              </div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+              <img 
+                src={logoWhite} 
+                alt="EGC Logo" 
+                style={{ height: '42px', width: 'auto', display: 'block' }} 
+              />
+              <span style={{ fontSize: '8px', color: 'rgba(255, 255, 255, 0.6)', textTransform: 'uppercase', letterSpacing: '1.2px', fontWeight: '700', marginTop: '2px', fontFamily: 'Outfit, sans-serif' }}>
+                Ekora Global Consulting
+              </span>
             </div>
             
             <p style={{ lineHeight: '1.5', color: 'rgba(255,255,255,0.5)' }}>
@@ -230,6 +159,10 @@ export default function Footer() {
               <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                 <Mail size={14} style={{ color: '#b5893b' }} />
                 <span>info@egcekora.com</span>
+              </div>
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'start' }}>
+                <MapPin size={14} style={{ color: '#b5893b', flexShrink: 0, marginTop: '2px' }} />
+                <span style={{ lineHeight: '1.4' }}>No. 39/3, 1st Floor, Richmond Town, Richmond Road, Bengaluru - 560025</span>
               </div>
             </div>
 
@@ -309,25 +242,40 @@ export default function Footer() {
             <div>
               <h5 style={{ color: 'white', fontWeight: 'bold', fontSize: '13px', marginBottom: '15px', textTransform: 'uppercase' }}>Company</h5>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px', padding: 0 }}>
-                {['About Us', 'Our Mission', 'Leadership', 'Careers', 'News & Press'].map(l => <li key={l}><a href="#about" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>{l}</a></li>)}
+                <li><Link to="/about" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>About Us</Link></li>
+                <li><Link to="/about" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Our Mission</Link></li>
+                <li><Link to="/about" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Leadership</Link></li>
+                <li><Link to="/about" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Careers</Link></li>
+                <li><Link to="/about" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>News & Press</Link></li>
               </ul>
             </div>
             <div>
               <h5 style={{ color: 'white', fontWeight: 'bold', fontSize: '13px', marginBottom: '15px', textTransform: 'uppercase' }}>Our Services</h5>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px', padding: 0 }}>
-                {['R&D & Formulation', 'Factory Setup', 'Regulatory', 'Product Dev', 'Private Label'].map(l => <li key={l}><a href="#capabilities" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>{l}</a></li>)}
+                <li><Link to="/services" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>R&D & Formulation</Link></li>
+                <li><Link to="/portfolio" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Factory Setup</Link></li>
+                <li><Link to="/services" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Regulatory</Link></li>
+                <li><Link to="/services" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Product Dev</Link></li>
+                <li><Link to="/services" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Private Label</Link></li>
               </ul>
             </div>
             <div>
               <h5 style={{ color: 'white', fontWeight: 'bold', fontSize: '13px', marginBottom: '15px', textTransform: 'uppercase' }}>Resources</h5>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px', padding: 0 }}>
-                {['Insights / Blog', 'White Papers', 'Case Studies', 'FAQs', 'Glossary'].map(l => <li key={l}><a href="#rd" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>{l}</a></li>)}
+                <li><Link to="/rd-lab" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Insights / Blog</Link></li>
+                <li><Link to="/rd-lab" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>White Papers</Link></li>
+                <li><Link to="/rd-lab" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Case Studies</Link></li>
+                <li><Link to="/rd-lab" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>FAQs</Link></li>
+                <li><Link to="/rd-lab" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Glossary</Link></li>
               </ul>
             </div>
             <div>
               <h5 style={{ color: 'white', fontWeight: 'bold', fontSize: '13px', marginBottom: '15px', textTransform: 'uppercase' }}>Support</h5>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px', padding: 0 }}>
-                {['Contact Us', 'Client Portal', 'Documentation', 'Training'].map(l => <li key={l}><a href="#contact" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>{l}</a></li>)}
+                <li><button onClick={handleScrollToContact} style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', textAlign: 'left', color: 'rgba(255,255,255,0.5)', fontSize: '13px' }}>Contact Us</button></li>
+                <li><button onClick={handleScrollToContact} style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', textAlign: 'left', color: 'rgba(255,255,255,0.5)', fontSize: '13px' }}>Client Portal</button></li>
+                <li><button onClick={handleScrollToContact} style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', textAlign: 'left', color: 'rgba(255,255,255,0.5)', fontSize: '13px' }}>Documentation</button></li>
+                <li><button onClick={handleScrollToContact} style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', textAlign: 'left', color: 'rgba(255,255,255,0.5)', fontSize: '13px' }}>Training</button></li>
               </ul>
             </div>
           </div>
@@ -335,15 +283,10 @@ export default function Footer() {
           {/* Global Presence Map */}
           <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '15px' }}>
             <h5 style={{ color: 'white', fontWeight: 'bold', fontSize: '13px', textTransform: 'uppercase', margin: 0 }}>Global Presence</h5>
-            <img 
-              src="/images/assets/global_map.png" 
-              alt="EGC global consultant office maps" 
-              style={{ width: '100%', maxWidth: '240px', height: 'auto', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }}
-            />
             <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)', display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <span><strong>North America:</strong> USA</span>
               <span><strong>Europe:</strong> Italy • France • Germany</span>
-              <span><strong>Asia:</strong> India • Singapore • Malaysia</span>
+              <span><strong>Asia (Corporate HQ):</strong> No. 39/3, Richmond Rd, Bengaluru</span>
             </div>
           </div>
 

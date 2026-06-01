@@ -1,5 +1,6 @@
 import React from 'react';
 import { Star, MessageSquare, PhoneCall, Mail, Calendar, MapPin, ArrowRight } from 'lucide-react';
+import ctaBottles from '../assets/ChatGPT Image Jun 1, 2026, 08_11_46 PM.png';
 
 const REVIEWS = [
   {
@@ -137,23 +138,68 @@ export default function Testimonials() {
         {/* Bottom CTA Banner */}
         <div style={{
           background: 'radial-gradient(circle at left, #2d184d 0%, #1b0b30 100%)',
-          borderRadius: '16px',
-          padding: '50px 60px',
+          borderRadius: '20px',
+          padding: '60px 80px',
           color: 'white',
           display: 'grid',
-          gridTemplateColumns: '0.8fr 1.2fr',
-          gap: '40px',
+          gridTemplateColumns: '1fr 1.1fr',
+          gap: '50px',
           alignItems: 'center',
           textAlign: 'left',
-          boxShadow: '0 15px 35px rgba(27,11,48,0.2)'
+          boxShadow: '0 20px 45px rgba(27,11,48,0.25)'
         }} className="cta-banner">
           
-          {/* Left CTA Graphic */}
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          {/* Left CTA Graphic (Premium Styled & Floating - Enlarged) */}
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'center',
+            position: 'relative',
+            width: '100%',
+            height: '100%',
+            minHeight: '340px',
+            alignItems: 'center',
+            padding: '20px 0'
+          }} className="cta-graphic-container">
+            {/* Soft gold glowing blur background */}
+            <div style={{
+              position: 'absolute',
+              width: '240px',
+              height: '240px',
+              background: 'radial-gradient(circle, rgba(181, 137, 59, 0.4) 0%, transparent 70%)',
+              filter: 'blur(40px)',
+              zIndex: 1,
+              pointerEvents: 'none'
+            }} />
+            
+            {/* Elegant rotated border frame */}
+            <div style={{
+              position: 'absolute',
+              width: '100%',
+              maxWidth: '380px',
+              height: '250px',
+              border: '1px solid rgba(181, 137, 59, 0.35)',
+              borderRadius: '24px',
+              transform: 'rotate(5deg) translateY(12px) translateX(8px)',
+              zIndex: 1,
+              pointerEvents: 'none',
+              transition: 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.6s'
+            }} className="cta-frame-back" />
+            
             <img 
-              src="/images/assets/cta_bottles.png" 
+              src={ctaBottles} 
               alt="Luxury EGC Gold formulations bottles" 
-              style={{ width: '100%', maxWidth: '300px', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 20px rgba(0,0,0,0.3)' }}
+              style={{ 
+                width: '100%', 
+                maxWidth: '380px', 
+                height: 'auto', 
+                borderRadius: '20px', 
+                boxShadow: '0 25px 55px rgba(0,0,0,0.5)',
+                transform: 'rotate(-3deg) translateY(-8px)',
+                zIndex: 2,
+                transition: 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1)',
+                border: '1px solid rgba(255,255,255,0.1)'
+              }}
+              className="cta-image-floating"
             />
           </div>
 
@@ -212,8 +258,8 @@ export default function Testimonials() {
               <div style={{ display: 'flex', gap: '10px', alignItems: 'center', background: 'rgba(255,255,255,0.05)', padding: '12px', borderRadius: '8px' }}>
                 <MapPin size={18} style={{ color: '#b5893b' }} />
                 <div>
-                  <span style={{ fontSize: '12px', fontWeight: 'bold', display: 'block', color: 'white' }}>Global Offices</span>
-                  <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.5)' }}>USA • Europe • India</span>
+                  <span style={{ fontSize: '12px', fontWeight: 'bold', display: 'block', color: 'white' }}>Corporate HQ</span>
+                  <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.5)' }}>No. 39/3, Richmond Rd, Bengaluru</span>
                 </div>
               </div>
 
@@ -248,16 +294,34 @@ export default function Testimonials() {
         </div>
       </div>
 
-      {/* Marquee animation */}
+      {/* Marquee animation & CTA animations */}
       <style>{`
         @keyframes marquee {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
+        .cta-banner {
+          transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .cta-banner:hover {
+          box-shadow: 0 20px 45px rgba(27,11,48,0.3) !important;
+        }
+        .cta-banner:hover .cta-image-floating {
+          transform: rotate(0deg) translateY(-16px) scale(1.04) !important;
+          box-shadow: 0 25px 50px rgba(0,0,0,0.55) !important;
+        }
+        .cta-banner:hover .cta-frame-back {
+          transform: rotate(7deg) translateY(18px) translateX(10px) scale(0.96) !important;
+          border-color: rgba(181, 137, 59, 0.6) !important;
+        }
         @media (max-width: 900px) {
           .cta-banner {
             grid-template-columns: 1fr !important;
             padding: 40px !important;
+          }
+          .cta-graphic-container {
+            min-height: 250px !important;
+            margin-bottom: 20px;
           }
         }
         @media (max-width: 500px) {

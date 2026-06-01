@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import { X, Wrench, Factory, Activity, ClipboardList, Check, ArrowRight } from 'lucide-react';
+import factoryConveyor from '../assets/ChatGPT Image Jun 1, 2026, 07_14_44 PM.png';
+import facBoutique from '../assets/fac_boutique.png';
+import facCosmetic from '../assets/fac_cosmetic.png';
+import facIndustrial from '../assets/fac_industrial.png';
+import facTurnkey from '../assets/fac_turnkey.png';
+
 
 const FACTORY_DETAILS = {
   boutique: {
     title: 'Boutique R&D Plant',
     capacity: '5,000 - 10,000 bottles/day',
-    img: '/images/assets/fac_boutique.png',
+    img: facBoutique,
     icon: <Wrench size={32} style={{ color: '#b5893b' }} />,
     specs: {
       area: '2,500 - 5,000 sq. ft.',
@@ -18,7 +24,7 @@ const FACTORY_DETAILS = {
   manufacturing: {
     title: 'Cosmetic Manufacturing Plant',
     capacity: '10,000 - 50,000 bottles/day',
-    img: '/images/assets/fac_cosmetic.png',
+    img: facCosmetic,
     icon: <Factory size={32} style={{ color: '#b5893b' }} />,
     specs: {
       area: '10,000 - 25,000 sq. ft.',
@@ -31,7 +37,7 @@ const FACTORY_DETAILS = {
   industrial: {
     title: 'Global Industrial Plant',
     capacity: '50,000 - 100,000+ bottles/day',
-    img: '/images/assets/fac_industrial.png',
+    img: facIndustrial,
     icon: <Activity size={32} style={{ color: '#b5893b' }} />,
     specs: {
       area: '40,000 - 100,000+ sq. ft.',
@@ -44,7 +50,7 @@ const FACTORY_DETAILS = {
   turnkey: {
     title: 'Turnkey Project Execution',
     capacity: 'End-to-End Service',
-    img: '/images/assets/fac_turnkey.png',
+    img: facTurnkey,
     icon: <ClipboardList size={32} style={{ color: '#b5893b' }} />,
     specs: {
       area: 'Varies by plant scale.',
@@ -73,29 +79,79 @@ export default function FactorySetup() {
   return (
     <section id="factory" style={{
       background: '#fbfaf7',
-      padding: '80px 40px',
-      borderBottom: '1px solid rgba(181, 137, 59, 0.1)'
+      padding: '0 0 80px 0',
+      borderBottom: '1px solid rgba(181, 137, 59, 0.1)',
+      position: 'relative',
+      overflow: 'hidden'
     }}>
-      <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '60px' }}>
+      
+      {/* Immersive Banner Header */}
+      <div className="factory-banner">
         
-        {/* Top Info & Compounding Line graphic */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1.2fr 0.8fr',
-          gap: '40px',
-          alignItems: 'center'
-        }} className="factory-header-grid">
-          <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '15px' }}>
-            <span style={{ fontSize: '13px', fontWeight: '700', color: '#b5893b', letterSpacing: '2px', textTransform: 'uppercase' }}>
+        {/* RIGHT IMMERSIVE IMAGE LAYER (60% width block) */}
+        <div className="factory-banner-right">
+          <img 
+            src={factoryConveyor} 
+            alt="EGC sterile cosmetic conveyor compounding unit" 
+            className="factory-banner-img"
+          />
+          
+          {/* Layered Overlays */}
+          <div className="factory-ov-left" />
+          <div className="factory-ov-bottom" />
+          <div className="factory-ov-top" />
+        </div>
+
+        {/* LEFT CONTENT PANEL (40% width block) */}
+        <div className="factory-banner-left">
+          <div style={{
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: '18px', 
+            position: 'relative', 
+            zIndex: 3, 
+            width: '100%',
+            maxWidth: '520px',
+            textAlign: 'left'
+          }}>
+            {/* Eyebrow */}
+            <span style={{ 
+              fontSize: '11px', 
+              fontWeight: '700', 
+              color: '#C89B3C', 
+              letterSpacing: '3px', 
+              textTransform: 'uppercase',
+              fontFamily: 'var(--font-sans)'
+            }}>
               Factory Setup Planning
             </span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '42px', color: '#1b0b30', fontWeight: '600', margin: 0 }}>
+            
+            {/* Heading */}
+            <h2 style={{ 
+              fontFamily: 'var(--font-serif)', 
+              fontSize: 'clamp(32px, 3.2vw, 44px)', 
+              color: '#1B1035', 
+              fontWeight: '600', 
+              margin: 0,
+              lineHeight: '1.2'
+            }}>
               State-of-the-Art Factory Blueprinting
             </h2>
-            <p style={{ fontSize: '16px', color: '#5c526b', lineHeight: '1.6', maxWidth: '640px', margin: 0 }}>
+            
+            {/* Gold separator line */}
+            <div style={{
+              width: '40px',
+              height: '1.5px',
+              background: 'linear-gradient(90deg, #C89B3C 0%, #e8cc7a 100%)',
+              borderRadius: '2px'
+            }} />
+
+            {/* Paragraph */}
+            <p style={{ fontSize: '14.5px', color: '#5c526b', lineHeight: '1.7', margin: 0 }}>
               We design and build world-class cosmetic manufacturing facilities aligned with GMP and ISO standards — while optimizing workflow efficiency, cleanroom zoning, utility planning, and scalable production capacity for future growth.
             </p>
 
+            {/* View Factory Setup Solutions Button */}
             <button
               onClick={() => setShowFullSpecs(true)}
               style={{
@@ -103,51 +159,53 @@ export default function FactorySetup() {
                 alignItems: 'center',
                 gap: '8px',
                 padding: '12px 24px',
-                background: '#b5893b',
-                color: 'white',
+                background: 'linear-gradient(135deg, #C89B3C 0%, #a87c28 100%)',
+                color: '#fff',
                 border: 'none',
                 borderRadius: '6px',
                 fontWeight: '600',
-                fontSize: '14px',
+                fontSize: '13.5px',
                 cursor: 'pointer',
                 width: 'fit-content',
                 marginTop: '10px',
-                transition: 'background 0.2s'
+                boxShadow: '0 4px 14px rgba(200, 155, 60, 0.3)',
+                transition: 'transform 0.18s, box-shadow 0.18s'
               }}
-              onMouseEnter={(e) => e.target.style.background = '#9c732c'}
-              onMouseLeave={(e) => e.target.style.background = '#b5893b'}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 18px rgba(200, 155, 60, 0.4)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 14px rgba(200, 155, 60, 0.3)';
+              }}
             >
               View Factory Setup Solutions
               <ArrowRight size={14} />
             </button>
           </div>
-          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <img 
-              src="/images/assets/factory_conveyor.png" 
-              alt="EGC sterile cosmetic conveyor compounding unit" 
-              style={{ width: '100%', maxWidth: '420px', height: 'auto', borderRadius: '12px' }}
-            />
-          </div>
         </div>
+      </div>
 
-        {/* Factory Solutions & Checklist Grid */}
+      {/* Factory Solutions & Checklist Grid */}
+      <div style={{ 
+        maxWidth: '1440px', 
+        margin: '60px auto 0', 
+        padding: '0 40px',
+        display: 'flex', 
+        flexDirection: 'column', 
+        gap: '40px' 
+      }}>
+        
+        <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '28px', color: '#1b0b30', textAlign: 'left', margin: 0 }}>
+          Our Factory Solutions
+        </h3>
+
         <div style={{
-          marginTop: '30px',
-          borderTop: '1px solid rgba(181, 137, 59, 0.2)',
-          paddingTop: '50px',
-          display: 'flex',
-          flexDirection: 'column',
+          display: 'grid',
+          gridTemplateColumns: '1.4fr 0.6fr',
           gap: '40px'
-        }}>
-          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '28px', color: '#1b0b30', textAlign: 'left' }}>
-            Our Factory Solutions
-          </h3>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1.4fr 0.6fr',
-            gap: '40px'
-          }} className="factory-body-grid">
+        }} className="factory-body-grid">
             
             {/* 4 Plant Scale Cards */}
             <div style={{
@@ -236,7 +294,6 @@ export default function FactorySetup() {
               </div>
             </div>
           </div>
-        </div>
       </div>
 
       {/* Plant Specification Modal */}
@@ -326,10 +383,95 @@ export default function FactorySetup() {
       )}
 
       <style>{`
+        .factory-banner {
+          position: relative;
+          display: flex;
+          width: 100%;
+          min-height: 480px;
+          overflow: hidden;
+          background: #fbfaf7;
+          border-bottom: 1px solid rgba(181, 137, 59, 0.08);
+        }
+        .factory-banner-left {
+          width: 45%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          z-index: 10;
+          position: relative;
+          padding: 80px 20px 80px 8%;
+        }
+        .factory-banner-right {
+          position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: 58%;
+          z-index: 1;
+          overflow: hidden;
+        }
+        .factory-banner-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center right;
+          display: block;
+        }
+        .factory-ov-left {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to right,
+            #fbfaf7 0%,
+            rgba(251, 250, 247, 0.94) 10%,
+            rgba(251, 250, 247, 0.4) 26%,
+            transparent 45%
+          );
+          z-index: 2;
+          pointer-events: none;
+        }
+        .factory-ov-bottom {
+          position: absolute;
+          bottom: 0; left: 0; right: 0;
+          height: 30%;
+          background: linear-gradient(to top,
+            rgba(27, 16, 53, 0.06) 0%,
+            transparent 100%
+          );
+          z-index: 2;
+          pointer-events: none;
+        }
+        .factory-ov-top {
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 20%;
+          background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.22) 0%,
+            transparent 100%
+          );
+          z-index: 2;
+          pointer-events: none;
+        }
         @media (max-width: 900px) {
-          .factory-header-grid {
-            grid-template-columns: 1fr !important;
-            gap: 40px !important;
+          .factory-banner {
+            flex-direction: column;
+            min-height: auto;
+          }
+          .factory-banner-left {
+            width: 100%;
+            padding: 56px 24px 36px;
+          }
+          .factory-banner-right {
+            position: relative;
+            width: 100%;
+            height: 60vw;
+            min-height: 280px;
+          }
+          .factory-ov-left {
+            background: linear-gradient(to bottom,
+              #fbfaf7 0%,
+              rgba(251, 250, 247, 0.88) 12%,
+              transparent 35%
+            );
           }
           .factory-body-grid {
             grid-template-columns: 1fr !important;

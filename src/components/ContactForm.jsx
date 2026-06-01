@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Send, CheckCircle2, User, Building, Phone, Globe, HelpCircle, Mail, Clock } from 'lucide-react';
+import bgImage from '../assets/bg.png';
 
 const BENEFITS = [
   { title: 'Expert Consultation', desc: 'Tailored solutions for your unique needs.' },
@@ -81,12 +82,8 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" style={{
-      background: '#fbfaf7',
-      padding: '80px 40px',
-      borderBottom: '1px solid rgba(181, 137, 59, 0.1)'
-    }}>
-      <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '50px' }}>
+    <section id="contact" className="contact-section-container">
+      <div className="contact-inner-wrapper">
         
         {/* Main Content Info */}
         <div style={{
@@ -130,14 +127,6 @@ export default function ContactForm() {
               ))}
             </div>
 
-            {/* Cropped Flasks image */}
-            <div style={{ marginTop: '10px' }}>
-              <img 
-                src="/images/assets/contact_flasks.png" 
-                alt="EGC cosmetics formulating lab glassware" 
-                style={{ width: '100%', maxWidth: '480px', height: 'auto', borderRadius: '12px', boxShadow: '0 5px 15px rgba(0,0,0,0.02)' }}
-              />
-            </div>
           </div>
 
           {/* Right Column: styled HTML form */}
@@ -348,19 +337,19 @@ export default function ContactForm() {
           </div>
         </div>
 
-        {/* Bottom response time info row & right packaging image */}
+        {/* Bottom response time info row */}
         <div style={{
           marginTop: '30px',
           borderTop: '1px solid rgba(181, 137, 59, 0.2)',
           paddingTop: '50px',
-          display: 'grid',
-          gridTemplateColumns: '1.2fr 0.8fr',
-          gap: '40px',
-          alignItems: 'center'
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          textAlign: 'left'
         }} className="contact-footer-grid">
           
-          <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <h4 style={{ fontSize: '16px', fontWeight: 'bold', color: '#1b0b30', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%' }}>
+            <h4 style={{ fontSize: '16px', fontWeight: 'bold', color: '#1b0b30', display: 'flex', alignItems: 'center', gap: '8px', margin: 0 }}>
               <Clock size={18} style={{ color: '#b5893b' }} />
               We Typically Respond Within
             </h4>
@@ -368,7 +357,8 @@ export default function ContactForm() {
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '15px'
+              gap: '24px',
+              width: '100%'
             }} className="response-time-grid">
               {RESPONSES.map((res, i) => (
                 <div key={i} style={{ borderRight: i < 3 ? '1px solid #e2dfd8' : 'none', paddingRight: '10px' }}>
@@ -377,14 +367,6 @@ export default function ContactForm() {
                 </div>
               ))}
             </div>
-          </div>
-
-          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <img 
-              src="/images/assets/contact_factory.png" 
-              alt="EGC cosmetics sterile packaging manufacturing line" 
-              style={{ width: '100%', maxWidth: '380px', height: 'auto', borderRadius: '12px' }}
-            />
           </div>
         </div>
 
@@ -423,6 +405,34 @@ export default function ContactForm() {
       )}
 
       <style>{`
+        .contact-section-container {
+          position: relative;
+          overflow: hidden;
+          padding: 80px 40px;
+          border-bottom: 1px solid rgba(181, 137, 59, 0.1);
+          background: #fbfaf7;
+        }
+        .contact-section-container::before {
+          content: "";
+          position: absolute;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background-image: url(${bgImage});
+          background-size: cover;
+          background-position: center;
+          filter: blur(8px);
+          opacity: 0.16;
+          z-index: 1;
+          pointer-events: none;
+        }
+        .contact-inner-wrapper {
+          position: relative;
+          z-index: 2;
+          max-width: 1440px;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          gap: 50px;
+        }
         @media (max-width: 900px) {
           .contact-grid {
             grid-template-columns: 1fr !important;

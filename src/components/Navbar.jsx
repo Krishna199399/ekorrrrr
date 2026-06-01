@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, PhoneCall, ArrowRight } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import logoBlack from '../assets/logo_black.png';
 
 const NAV_ITEMS = [
-  { label: 'Home', target: 'home' },
-  { label: 'About Us', target: 'about' },
-  { label: 'Services', target: 'capabilities' },
-  { label: 'Product Expertise', target: 'expertise' },
-  { label: 'Global Markets', target: 'global' },
-  { label: 'R&D Innovation', target: 'rd' },
-  { label: 'Factory Setup', target: 'factory' },
-  { label: 'Testimonials', target: 'testimonials' },
-  { label: 'Contact', target: 'contact' }
+  { label: 'ABOUT', target: 'about' },
+  { label: 'SERVICES', target: 'capabilities' },
+  { label: 'PRODUCT EXPERTISE', target: 'expertise' },
+  { label: 'R&D LAB', target: 'rd' },
+  { label: 'PORTFOLIO', target: 'factory' }
 ];
 
 export default function Navbar({ onOpenSimulator }) {
-  const [activeSection, setActiveSection] = useState('home');
+  const navigate = useNavigate();
+  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -25,20 +24,6 @@ export default function Navbar({ onOpenSimulator }) {
       } else {
         setScrolled(false);
       }
-
-      const scrollPosition = window.scrollY + 120; // offset for nav height
-
-      for (const item of NAV_ITEMS) {
-        const el = document.getElementById(item.target);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(item.target);
-            break;
-          }
-        }
-      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -47,11 +32,38 @@ export default function Navbar({ onOpenSimulator }) {
 
   const handleNavClick = (target) => {
     setMobileMenuOpen(false);
-    const el = document.getElementById(target);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+    if (target === 'home') {
+      navigate('/');
+    } else if (target === 'about') {
+      navigate('/about');
+    } else if (target === 'capabilities') {
+      navigate('/services');
+    } else if (target === 'expertise') {
+      navigate('/product-expertise');
+    } else if (target === 'rd') {
+      navigate('/rd-lab');
+    } else if (target === 'factory') {
+      navigate('/portfolio');
+    } else if (target === 'contact') {
+      const el = document.getElementById('contact');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
+
+  const getActiveSection = () => {
+    const path = location.pathname;
+    if (path === '/about') return 'about';
+    if (path === '/services') return 'capabilities';
+    if (path === '/product-expertise') return 'expertise';
+    if (path === '/rd-lab') return 'rd';
+    if (path === '/portfolio') return 'factory';
+    if (path === '/') return 'home';
+    return '';
+  };
+
+  const activeSection = getActiveSection();
 
   return (
     <nav style={{
@@ -73,16 +85,16 @@ export default function Navbar({ onOpenSimulator }) {
       {/* Brand Logo */}
       <div 
         onClick={() => handleNavClick('home')}
-        style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}
+        style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', cursor: 'pointer' }}
       >
-        <svg viewBox="0 0 100 100" style={{ width: '38px', height: '38px', fill: '#b5893b' }}>
-          <path d="M50 15 C35 30, 20 45, 20 60 C20 75, 30 85, 50 85 C70 85, 80 75, 80 60 C80 45, 65 30, 50 15 Z M50 25 C60 38, 72 50, 72 60 C72 70, 62 77, 50 77 C38 77, 28 70, 28 60 C28 50, 40 38, 50 25 Z" />
-          <path d="M50 35 C45 42, 42 48, 42 55 C42 62, 47 67, 50 67 C53 67, 58 62, 58 55 C58 48, 55 42, 50 35 Z" fill="#b5893b" opacity="0.8" />
-        </svg>
-        <div>
-          <span style={{ fontFamily: 'var(--font-serif)', fontSize: '20px', fontWeight: 'bold', color: '#b5893b', letterSpacing: '1px', display: 'block', lineHeight: 1.1 }}>EGC</span>
-          <span style={{ fontSize: '8px', color: '#2d2736', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: '700' }}>Ekora Global Consulting</span>
-        </div>
+        <img 
+          src={logoBlack} 
+          alt="EGC Logo" 
+          style={{ height: '48px', width: 'auto', display: 'block' }} 
+        />
+        <span style={{ fontSize: '8px', color: '#2d2736', textTransform: 'uppercase', letterSpacing: '1.2px', fontWeight: '700', marginTop: '2px', fontFamily: 'Outfit, sans-serif' }}>
+          Ekora Global Consulting
+        </span>
       </div>
 
       {/* Desktop Links */}

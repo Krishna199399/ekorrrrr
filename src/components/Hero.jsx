@@ -1,5 +1,6 @@
 import React from 'react';
 import { FlaskConical, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import heroProducts from '../assets/hero_products.png';
 
 /* ─── Laurel Wreath Seal ─────────────────────────────────────────── */
@@ -40,9 +41,9 @@ const LaurelSeal = ({ lines }) => (
 
 /* ─── Hero ───────────────────────────────────────────────────────── */
 export default function Hero({ onOpenSimulator }) {
+  const navigate = useNavigate();
   const handleExploreClick = () => {
-    const el = document.getElementById('capabilities');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    navigate('/services');
   };
 
   return (
