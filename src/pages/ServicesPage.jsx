@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Capabilities from '../components/Capabilities';
 import ContactForm from '../components/ContactForm';
@@ -32,17 +34,10 @@ export default function ServicesPage() {
   ];
 
   return (
-    <div style={{ background: 'linear-gradient(135deg, #f5f2fc 0%, #ebe5f7 100%)', color: '#2d2736', paddingTop: '80px' }}>
+    <div className="page-container">
       
       {/* 1. Page Hero */}
-      <div style={{
-        background: 'linear-gradient(135deg, #1b0b30 0%, #2d184d 100%)',
-        color: 'white',
-        padding: '80px 40px',
-        textAlign: 'center',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
+      <div className="page-hero">
         <div style={{
           position: 'absolute',
           top: 0, left: 0, right: 0, bottom: 0,
@@ -63,7 +58,7 @@ export default function ServicesPage() {
       </div>
 
       {/* 2. Step-by-Step Project Process */}
-      <div style={{ padding: '80px 40px', maxWidth: '1440px', margin: '0 auto' }}>
+      <div className="page-section">
         <div style={{ textAlign: 'center', marginBottom: '50px' }}>
           <span style={{ color: '#b5893b', fontWeight: 'bold', letterSpacing: '1px', fontSize: '11px', textTransform: 'uppercase' }}>
             Our Project Pipeline
@@ -74,12 +69,7 @@ export default function ServicesPage() {
           <div style={{ width: '40px', height: '2px', background: '#b5893b', margin: '15px auto 0' }} />
         </div>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '30px',
-          position: 'relative'
-        }}>
+        <div className="values-grid">
           {steps.map((s, idx) => (
             <div key={idx} style={{
               background: 'white',
@@ -130,6 +120,53 @@ export default function ServicesPage() {
 
       {/* 4. Contact Lead Call-to-action */}
       <ContactForm />
+
+      <style dangerouslySetInnerHTML={{__html:`
+        .page-container {
+          background: linear-gradient(135deg, #f5f2fc 0%, #ebe5f7 100%);
+          color: #2d2736;
+          padding-top: 80px;
+        }
+        .page-hero {
+          background: linear-gradient(135deg, #1b0b30 0%, #2d184d 100%);
+          color: white;
+          padding: 80px 40px;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+        }
+        .page-section {
+          padding: 80px 40px;
+          max-width: 1440px;
+          margin: 0 auto;
+        }
+        .values-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+          gap: 30px;
+          position: relative;
+        }
+        @media (max-width: 768px) {
+          .page-hero {
+            padding: 60px 20px;
+          }
+          .page-section {
+            padding: 48px 20px;
+          }
+          .values-grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px;
+          }
+        }
+        @media (max-width: 480px) {
+          .page-hero {
+            padding: 44px 16px;
+          }
+          .page-section {
+            padding: 36px 16px;
+          }
+        }
+      `}} />
     </div>
   );
 }

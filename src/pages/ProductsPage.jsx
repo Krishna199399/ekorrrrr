@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import ProductExpertise from '../components/ProductExpertise';
 import ContactForm from '../components/ContactForm';
@@ -54,17 +56,10 @@ export default function ProductsPage() {
   ];
 
   return (
-    <div style={{ background: 'linear-gradient(135deg, #f5f2fc 0%, #ebe5f7 100%)', color: '#2d2736', paddingTop: '80px' }}>
+    <div className="page-container">
       
       {/* 1. Page Hero */}
-      <div style={{
-        background: 'linear-gradient(135deg, #1b0b30 0%, #2d184d 100%)',
-        color: 'white',
-        padding: '80px 40px',
-        textAlign: 'center',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
+      <div className="page-hero">
         <div style={{
           position: 'absolute',
           top: 0, left: 0, right: 0, bottom: 0,
@@ -85,7 +80,7 @@ export default function ProductsPage() {
       </div>
 
       {/* 2. Formulation Specifications */}
-      <div style={{ padding: '80px 40px', maxWidth: '1440px', margin: '0 auto' }}>
+      <div className="page-section">
         <div style={{ textAlign: 'center', marginBottom: '50px' }}>
           <span style={{ color: '#b5893b', fontWeight: 'bold', letterSpacing: '1px', fontSize: '11px', textTransform: 'uppercase' }}>
             Formulation Blueprints
@@ -96,12 +91,7 @@ export default function ProductsPage() {
           <div style={{ width: '40px', height: '2px', background: '#b5893b', margin: '15px auto 0' }} />
         </div>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '30px',
-          marginBottom: '50px'
-        }}>
+        <div className="values-grid">
           {formulations.map((f, i) => (
             <div key={i} style={{
               background: 'white',
@@ -129,7 +119,7 @@ export default function ProductsPage() {
       <ProductExpertise />
 
       {/* 4. Active Ingredient Guide */}
-      <div style={{ padding: '80px 40px', background: 'linear-gradient(135deg, #ebe5f7 0%, #e3dcf2 100%)' }}>
+      <div className="team-section">
         <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '50px' }}>
             <span style={{ color: '#b5893b', fontWeight: 'bold', letterSpacing: '1px', fontSize: '11px', textTransform: 'uppercase' }}>
@@ -141,11 +131,7 @@ export default function ProductsPage() {
             <div style={{ width: '40px', height: '2px', background: '#b5893b', margin: '15px auto 0' }} />
           </div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '30px'
-          }}>
+          <div className="team-grid">
             {activesInfo.map((act, i) => (
               <div key={i} style={{
                 background: '#fbfaf7',
@@ -184,6 +170,72 @@ export default function ProductsPage() {
 
       {/* 5. Contact Lead Form */}
       <ContactForm />
+
+      <style dangerouslySetInnerHTML={{__html:`
+        .page-container {
+          background: linear-gradient(135deg, #f5f2fc 0%, #ebe5f7 100%);
+          color: #2d2736;
+          padding-top: 80px;
+        }
+        .page-hero {
+          background: linear-gradient(135deg, #1b0b30 0%, #2d184d 100%);
+          color: white;
+          padding: 80px 40px;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+        }
+        .page-section {
+          padding: 80px 40px;
+          max-width: 1440px;
+          margin: 0 auto;
+        }
+        .values-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 30px;
+          margin-bottom: 50px;
+        }
+        .team-section {
+          padding: 80px 40px;
+          background: linear-gradient(135deg, #ebe5f7 0%, #e3dcf2 100%);
+        }
+        .team-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 30px;
+        }
+        @media (max-width: 768px) {
+          .page-hero {
+            padding: 60px 20px;
+          }
+          .page-section {
+            padding: 48px 20px;
+          }
+          .team-section {
+            padding: 48px 20px;
+          }
+          .values-grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px;
+          }
+          .team-grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px;
+          }
+        }
+        @media (max-width: 480px) {
+          .page-hero {
+            padding: 44px 16px;
+          }
+          .page-section {
+            padding: 36px 16px;
+          }
+          .team-section {
+            padding: 36px 16px;
+          }
+        }
+      `}} />
     </div>
   );
 }

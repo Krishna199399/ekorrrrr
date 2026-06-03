@@ -1,17 +1,14 @@
+'use client';
+
 import React, { useState } from 'react';
 import { X, FlaskConical, Building, Compass, FileText, Check } from 'lucide-react';
-import servicesHero from '../assets/services_hero.png';
-import setupPhoto from '../assets/photo_2026-05-30_02-23-41.jpg';
-import turnkeyPhoto from '../assets/photo_2026-05-30_02-23-54.jpg';
-import compliancePhoto from '../assets/photo_2026-05-30_02-24-14.jpg';
-import rndPhoto from '../assets/photo_2026-05-30_02-33-38.jpg';
 
 const CAPABILITIES = [
   {
     id: 'rnd',
     num: '01',
     title: 'Cosmetic R&D & Formulation',
-    img: rndPhoto,
+    img: '/photo_2026-05-30_02-33-38.jpg',
     icon: <FlaskConical size={20} />,
     color: '#8a6bbd', // purple accent matching mockup
     bullets: [
@@ -21,17 +18,17 @@ const CAPABILITIES = [
       'Stability testing & validation support'
     ],
     fullBullets: [
-      'Customized formulation development (skincare serums, hair restoratives, luxury body creams, and premium cosmetics).',
-      'Ingredient compatibility analysis (assessing active ingredient synergies, chemical stability, and pH constraints).',
-      'Texture optimization & prototyping (adjusting viscosity, sensory feel, absorption rate, and fragrance profiles).',
-      'Stability testing & validation support (microbial challenge tests, freeze-thaw cycles, and heat acceleration testing).'
+      'Customized formulation development for skincare, haircare, body care, luxury cosmetics, and personal care products.',
+      'Ingredient compatibility analysis to assess active ingredient synergies, chemical stability, pH compatibility, and formulation performance.',
+      'Texture optimization and prototype development focused on sensory experience, absorption, spreadability, and fragrance integration.',
+      'Stability testing and validation support including microbial challenge studies, freeze-thaw testing, accelerated aging studies, and compatibility assessments.'
     ]
   },
   {
     id: 'setup',
     num: '02',
     title: 'Plant Setup & Factory Planning',
-    img: setupPhoto,
+    img: '/photo_2026-05-30_02-23-41.jpg',
     icon: <Building size={20} />,
     color: '#d69e45', // gold accent
     bullets: [
@@ -41,17 +38,17 @@ const CAPABILITIES = [
       'Production infrastructure support'
     ],
     fullBullets: [
-      'Factory layout & cleanroom zoning (creating blueprint maps aligned with GMP and ISO 22716 guidelines).',
-      'Machinery selection & utility planning (sourcing automated mixers, sterile filling machines, and RO water filtration plants).',
-      'Workflow optimization (defining zoning transitions, material access vestibules, and raw materials storage flow).',
-      'Production infrastructure support (designing pilot testing labs, waste treatment setups, and HVAC zoning charts).'
+      'Factory layout development aligned with GMP and ISO 22716 manufacturing requirements.',
+      'Machinery selection and utility planning including automated mixers, homogenizers, filling lines, water treatment systems, and packaging equipment.',
+      'Workflow optimization through intelligent zoning, material movement planning, storage management, and contamination control strategies.',
+      'Production infrastructure planning covering pilot laboratories, quality control facilities, HVAC systems, cleanrooms, and utility networks.'
     ]
   },
   {
     id: 'turnkey',
     num: '03',
     title: 'Turnkey Project Solutions',
-    img: turnkeyPhoto,
+    img: '/photo_2026-05-30_02-23-54.jpg',
     icon: <Compass size={20} />,
     color: '#7b5cb7',
     bullets: [
@@ -61,17 +58,17 @@ const CAPABILITIES = [
       'Operational planning & training'
     ],
     fullBullets: [
-      'End-to-end project execution (managing greenfield factory construction from blueprint design to production start).',
-      'Vendor coordination & installation support (assisting in equipment procurement, validation runs, and SAT testing).',
-      'Commercial production setup (scaling up lab-scale formulations to 500kg-2000kg production batches seamlessly).',
-      'Operational planning & training (authoring Standard Operating Procedures (SOPs), safety policies, and technician training).'
+      'Complete project management from facility planning and construction through commercial production readiness.',
+      'Vendor coordination, equipment sourcing, installation oversight, validation support, and commissioning assistance.',
+      'Commercial production scale-up from laboratory prototypes to large-volume manufacturing operations.',
+      'SOP development, workforce training, operational planning, safety systems, and quality management frameworks.'
     ]
   },
   {
     id: 'compliance',
     num: '04',
     title: 'Regulatory, BIS & FDA Compliance',
-    img: compliancePhoto,
+    img: '/photo_2026-05-30_02-24-14.jpg',
     icon: <FileText size={20} />,
     color: '#d69e45',
     bullets: [
@@ -81,10 +78,10 @@ const CAPABILITIES = [
       'Export documentation & coordination'
     ],
     fullBullets: [
-      'Cosmetic compliance documentation (compiling Product Information Files (PIFs) and Ingredient Safety Assessments).',
-      'Product registration guidance (securing FDA facility listings, MoCRA portals, and CDSCO manufacture licenses).',
-      'Label review & claim verification (vetting ingredient nomenclatures, cosmetic warnings, and active clinical claims).',
-      'Export documentation & coordination (verifying Certificate of Free Sale, customs export classification, and MSDS logs).'
+      'Preparation of Product Information Files (PIF), ingredient safety assessments, and technical documentation.',
+      'Guidance for FDA facility registrations, MoCRA compliance, CDSCO registrations, and international market approvals.',
+      'Label review and claims verification to ensure regulatory compliance and consumer transparency.',
+      'Export documentation support including Free Sale Certificates, MSDS documentation, customs requirements, and international compliance records.'
     ]
   }
 ];
@@ -107,7 +104,7 @@ export default function Capabilities() {
         {/* RIGHT IMMERSIVE IMAGE LAYER (60% width block) */}
         <div className="capabilities-banner-right">
           <img 
-            src={servicesHero} 
+            src="/services_hero.png"
             alt="EGC cosmetics laboratory capabilities" 
             className="capabilities-banner-img"
           />
@@ -327,7 +324,7 @@ export default function Capabilities() {
         </div>
       )}
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{__html:`
         .capabilities-banner {
           position: relative;
           display: flex;
@@ -427,7 +424,27 @@ export default function Capabilities() {
             );
           }
         }
-      `}</style>
+        @media (max-width: 768px) {
+          #capabilities {
+            padding-bottom: 56px !important;
+          }
+          #capabilities > div {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+          }
+          .capabilities-banner-left {
+            padding: 44px 20px 32px !important;
+          }
+          .capabilities-cards {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .capabilities-banner-left {
+            padding: 36px 16px 28px !important;
+          }
+        }
+      `}} />
     </section>
   );
 }

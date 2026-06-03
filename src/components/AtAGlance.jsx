@@ -1,6 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
 import { X, Award, Globe, Database, Building2, Users, ShieldCheck, Heart } from 'lucide-react';
-import glancePhoto from '../assets/photo_2026-05-30_02-09-12.jpg';
 
 const STATS_DETAILS = {
   clients: {
@@ -41,13 +42,13 @@ const STATS_DETAILS = {
 };
 
 const STAT_ITEMS = [
-  { key: 'clients', label: 'Global Clients', value: '100+', desc: 'Trusted by cosmetic brands', icon: <Users size={20} /> },
-  { key: 'formulations', label: 'Formulations Developed', value: '500+', desc: 'Clinical & organic recipes', icon: <Database size={20} /> },
-  { key: 'factories', label: 'Factories Planned', value: '50+', desc: 'GMP & ISO blueprints', icon: <Building2 size={20} /> },
-  { key: 'countries', label: 'Countries Served', value: '20+', desc: 'Global regulatory export', icon: <Globe size={20} /> },
-  { key: 'team', label: 'Expert Team', value: 'Chemists', desc: 'PhD formulation scientists', icon: <Users size={20} /> },
-  { key: 'quality', label: 'Quality Assurance', value: 'Vetted', desc: '100% stable recipes', icon: <ShieldCheck size={20} /> },
-  { key: 'standards', label: 'Global Standards', value: 'Certified', desc: 'FDA, BIS, ISO alignment', icon: <Award size={20} /> }
+  { key: 'clients', label: 'Global Clients', value: '100+', desc: 'Trusted by cosmetic brands and manufacturers worldwide', icon: <Users size={20} /> },
+  { key: 'formulations', label: 'Formulations Developed', value: '500+', desc: 'Clinical, cosmetic, herbal, and premium formulations', icon: <Database size={20} /> },
+  { key: 'factories', label: 'Factories Planned', value: '50+', desc: 'GMP-compliant manufacturing blueprints and production facilities', icon: <Building2 size={20} /> },
+  { key: 'countries', label: 'Countries Supported', value: '20+', desc: 'Global regulatory and export consulting expertise', icon: <Globe size={20} /> },
+  { key: 'team', label: 'Expert Technical Team', value: 'Chemists', desc: 'Experienced formulation scientists and industry specialists', icon: <Users size={20} /> },
+  { key: 'quality', label: 'Quality Assured Processes', value: 'Vetted', desc: 'Stable, scalable, and commercially viable product systems', icon: <ShieldCheck size={20} /> },
+  { key: 'standards', label: 'Global Standards Alignment', value: 'Certified', desc: 'FDA, BIS, GMP, ISO, and international compliance frameworks', icon: <Award size={20} /> }
 ];
 
 export default function AtAGlance() {
@@ -82,13 +83,13 @@ export default function AtAGlance() {
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', color: '#5c526b', fontSize: '15px', lineHeight: '1.6' }}>
               <p>
-                <strong>Founded by cosmetic scientists and cleanroom engineering pioneers</strong>, EGC Ekora Global Consulting bridges the gap between boutique chemical breakthroughs and high-volume, GMP-compliant manufacturing environments.
+                <strong>Founded by cosmetic scientists and cleanroom engineering pioneers</strong>, EGC Ekora Global Consulting bridges the gap between innovative product development and high-volume, GMP-compliant manufacturing environments.
               </p>
               <p>
-                We don't just formulate cosmetic products. We help brands build scalable beauty businesses through formulation science, manufacturing strategy, regulatory guidance, and operational planning.
+                We don't just formulate cosmetic products. We help businesses build scalable beauty brands through formulation science, manufacturing strategy, regulatory guidance, commercialization planning, and operational excellence.
               </p>
               <p>
-                From product development and ingredient research to factory planning and commercialization support, we work closely with cosmetic brands, startups, manufacturers, wellness companies, and private label businesses across India and international markets.
+                From product development and ingredient research to factory planning, manufacturing scale-up, and international market readiness, we work closely with cosmetic brands, startups, manufacturers, wellness companies, private label businesses, and global beauty operators.
               </p>
             </div>
             
@@ -138,7 +139,7 @@ export default function AtAGlance() {
               }}
             >
               <img
-                src={glancePhoto}
+                src="/photo_2026-05-30_02-09-12.jpg"
                 alt="EGC Cosmetic Science — products, laboratory and factory blueprint collage"
                 style={{
                   position: 'absolute',
@@ -237,14 +238,30 @@ export default function AtAGlance() {
         </div>
       )}
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{__html:`
         @media (max-width: 900px) {
           .glance-grid {
             grid-template-columns: 1fr !important;
             gap: 40px !important;
           }
         }
-      `}</style>
+        @media (max-width: 768px) {
+          #about {
+            padding: 56px 20px !important;
+          }
+          #about h2 {
+            font-size: clamp(26px, 7vw, 40px) !important;
+          }
+          .stat-card {
+            padding: 18px 10px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          #about {
+            padding: 44px 16px !important;
+          }
+        }
+      `}} />
     </section>
   );
 }

@@ -1,15 +1,13 @@
+'use client';
+
 import React, { useState } from 'react';
 import { X, Globe2, Landmark, FileCheck2, ArrowRight } from 'lucide-react';
-import globalGlobe from '../assets/global_globe_new.png';
-import regionNa from '../assets/region_na.png';
-import regionEu from '../assets/region_eu.png';
-import regionIn from '../assets/region_in.png';
 
 const COMPLIANCE_DETAILS = {
   na: {
     title: 'North America Compliance',
     regulatoryBody: 'Food and Drug Administration (FDA) & MoCRA 2022',
-    img: regionNa,
+    img: '/region_na.png',
     overview: 'The Modernization of Cosmetics Regulation Act of 2022 (MoCRA) represents the most significant expansion of FDA authority over cosmetics since 1938.',
     checklists: [
       'FDA Facility Registration: Required for all manufacturing facilities processing cosmetics for US distribution, updated biennially.',
@@ -22,7 +20,7 @@ const COMPLIANCE_DETAILS = {
   eu: {
     title: 'Europe Compliance',
     regulatoryBody: 'European Commission - CPNP Portal',
-    img: regionEu,
+    img: '/region_eu.png',
     overview: 'European Union cosmetics regulations are among the strictest in the world, focused heavily on ingredient banning, consumer safety, and product transparency.',
     checklists: [
       'Responsible Person (RP): A designated entity established in the EU to guarantee product compliance.',
@@ -35,7 +33,7 @@ const COMPLIANCE_DETAILS = {
   in: {
     title: 'India Compliance',
     regulatoryBody: 'Central Drugs Standard Control Organization (CDSCO) & Bureau of Indian Standards (BIS)',
-    img: regionIn,
+    img: '/region_in.png',
     overview: 'Importing or manufacturing cosmetics in India requires registration under the Drugs and Cosmetics Act, complying with specific quality standards.',
     checklists: [
       'CDSCO Registration Certificate: Mandatory registration for all imported cosmetics via Form COS-1.',
@@ -66,7 +64,7 @@ export default function GlobalMarkets() {
         {/* RIGHT IMMERSIVE IMAGE LAYER (60% width block) */}
         <div className="global-banner-right">
           <img 
-            src={globalGlobe} 
+            src="/global_globe_new.png"
             alt="EGC global compliance distribution" 
             className="global-banner-img"
           />
@@ -126,7 +124,7 @@ export default function GlobalMarkets() {
                 Expanding cosmetic products into international markets requires careful regulatory planning, documentation support, compliance validation, and region-specific product adaptation.
               </p>
               <p style={{ margin: 0 }}>
-                EGC Ekora Global Consulting supports cosmetic businesses with international compliance consulting and export readiness solutions for global market expansion.
+                EGC Ekora Global Consulting supports cosmetic brands and manufacturers with international compliance consulting and export readiness solutions for successful global market expansion.
               </p>
             </div>
 
@@ -315,7 +313,7 @@ export default function GlobalMarkets() {
         </div>
       )}
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{__html:`
         .global-banner {
           position: relative;
           display: flex;
@@ -423,7 +421,28 @@ export default function GlobalMarkets() {
             grid-template-columns: 1fr !important;
           }
         }
-      `}</style>
+        @media (max-width: 768px) {
+          #global {
+            padding-bottom: 56px !important;
+          }
+          #global > div {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            margin-top: 40px !important;
+          }
+          .global-banner-left {
+            padding: 44px 20px 32px !important;
+          }
+          .regions-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .global-banner-left {
+            padding: 36px 16px 28px !important;
+          }
+        }
+      `}} />
     </section>
   );
 }

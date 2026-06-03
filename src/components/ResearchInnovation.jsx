@@ -1,11 +1,12 @@
+'use client';
+
 import React, { useState } from 'react';
 import { 
   X, FlaskConical, Atom, Orbit, TestTube, Microscope, 
   ShieldCheck, FileText, Hexagon, Droplet, Leaf, 
   Recycle, Play, ArrowRight 
 } from 'lucide-react';
-import rdScientist from '../assets/rd_scientist.png';
-import rdShelves from '../assets/rd_shelves.png';
+import { useSimulator } from '../context/SimulatorContext';
 
 const RESEARCH_DETAILS = {
   formulation: {
@@ -53,7 +54,8 @@ const STATS = [
   { label: 'New Formulations', value: '15+', icon: <TestTube size={22} style={{ color: '#7b5cb7' }} /> }
 ];
 
-export default function ResearchInnovation({ onOpenSimulator }) {
+export default function ResearchInnovation() {
+  const { openSimulator } = useSimulator();
   const [selectedResearch, setSelectedResearch] = useState(null);
 
   return (
@@ -71,7 +73,7 @@ export default function ResearchInnovation({ onOpenSimulator }) {
         {/* RIGHT IMMERSIVE IMAGE LAYER (60% width block) */}
         <div className="rd-banner-right">
           <img 
-            src={rdScientist} 
+            src="/rd_scientist.png"
             alt="EGC R&D scientist in compounding cleanroom" 
             className="rd-banner-img"
           />
@@ -128,12 +130,12 @@ export default function ResearchInnovation({ onOpenSimulator }) {
 
             {/* Paragraph */}
             <p style={{ fontSize: '14.5px', color: '#5c526b', lineHeight: '1.7', margin: 0 }}>
-              Our advanced R&D environment combines cutting-edge technology, scientific expertise, and a passion for innovation to create safe, effective, and high-performance cosmetic solutions.
+              Our advanced R&D environment combines scientific expertise, formulation research, ingredient innovation, and performance testing to create safe, effective, and commercially viable cosmetic products.
             </p>
 
             {/* Premium Interactive Button */}
             <button
-              onClick={onOpenSimulator}
+              onClick={openSimulator}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -307,7 +309,7 @@ export default function ResearchInnovation({ onOpenSimulator }) {
         {/* Bottom shelves graphic banner */}
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
           <img 
-            src={rdShelves} 
+            src="/rd_shelves.png"
             alt="Where Science Creates Beauty" 
             style={{ width: '100%', height: 'auto', borderRadius: '12px', display: 'block', boxShadow: '0 4px 20px rgba(27, 11, 48, 0.05)' }}
           />
@@ -336,7 +338,7 @@ export default function ResearchInnovation({ onOpenSimulator }) {
         </div>
       )}
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{__html:`
         .rd-banner {
           position: relative;
           display: flex;
@@ -511,7 +513,41 @@ export default function ResearchInnovation({ onOpenSimulator }) {
             );
           }
         }
-      `}</style>
+        @media (max-width: 768px) {
+          #rd {
+            padding-bottom: 56px !important;
+          }
+          #rd > div {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            margin-top: 40px !important;
+          }
+          .rd-banner-left {
+            padding: 44px 20px 32px !important;
+          }
+          .rd-stats-card {
+            max-width: 100% !important;
+          }
+          .rd-features {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 16px !important;
+          }
+          .rd-areas-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .rd-banner-left {
+            padding: 36px 16px 28px !important;
+          }
+          .rd-areas-grid {
+            grid-template-columns: 1fr 1fr !important;
+          }
+          .rd-features {
+            grid-template-columns: 1fr 1fr !important;
+          }
+        }
+      `}} />
     </section>
   );
 }

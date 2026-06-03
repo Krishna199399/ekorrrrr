@@ -1,6 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
 import { X, Send, CheckCircle2, User, Building, Phone, Globe, HelpCircle, Mail, Clock } from 'lucide-react';
-import bgImage from '../assets/bg.png';
 
 const BENEFITS = [
   { title: 'Expert Consultation', desc: 'Tailored solutions for your unique needs.' },
@@ -99,11 +100,11 @@ export default function ContactForm() {
               Get In Touch
             </span>
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '42px', color: '#1b0b30', fontWeight: '600', margin: 0, lineHeight: 1.2 }}>
-              Let's Create the Future <br />
-              of Beauty, Together
+              Ready to Build Your
+              <br />Cosmetic Business?
             </h2>
             <p style={{ fontSize: '16px', color: '#5c526b', lineHeight: '1.6', maxWidth: '560px', margin: 0 }}>
-              Share your project goals with us and our experts will connect with you to explore how we can bring your vision to life with precision, innovation, and care.
+              Whether you're launching a brand, developing products, planning a factory, or expanding globally, our cosmetic industrial consultants are here to help.
             </p>
 
             {/* Benefits mini-grid */}
@@ -139,10 +140,10 @@ export default function ContactForm() {
             textAlign: 'left'
           }}>
             <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '24px', color: '#1b0b30', marginBottom: '8px' }}>
-              Send Us a Message
+              Get Consultation
             </h3>
             <p style={{ fontSize: '13px', color: '#7c728a', marginBottom: '25px' }}>
-              Fill out the form and our team will get back to you shortly.
+              Share your requirements and our team will get back to you with the right solution.
             </p>
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -337,6 +338,34 @@ export default function ContactForm() {
           </div>
         </div>
 
+        {/* Contact Details */}
+        <div style={{
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '32px',
+          flexWrap: 'wrap',
+          padding: '24px',
+          background: 'white',
+          border: '1px solid #e2dfd8',
+          borderRadius: '12px',
+          boxShadow: '0 4px 12px rgba(27,11,48,0.03)',
+          alignItems: 'center'
+        }}>
+          <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '700', color: '#1b0b30', flexShrink: 0 }}>Contact Us Directly</h4>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: '#5c526b' }}>
+            <Mail size={16} style={{ color: '#b5893b', flexShrink: 0 }} />
+            <a href="mailto:info@egcekora.com" style={{ color: '#5c526b', textDecoration: 'none' }}>info@egcekora.com</a>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: '#5c526b' }}>
+            <Phone size={16} style={{ color: '#b5893b', flexShrink: 0 }} />
+            <a href="tel:+12125557890" style={{ color: '#5c526b', textDecoration: 'none' }}>+1 (212) 555-7890</a>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: '#5c526b' }}>
+            <Globe size={16} style={{ color: '#b5893b', flexShrink: 0 }} />
+            <span>No. 39/3, Richmond Road, Bengaluru</span>
+          </div>
+        </div>
+
         {/* Bottom response time info row */}
         <div style={{
           marginTop: '30px',
@@ -404,7 +433,7 @@ export default function ContactForm() {
         </div>
       )}
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{__html:`
         .contact-section-container {
           position: relative;
           overflow: hidden;
@@ -416,7 +445,7 @@ export default function ContactForm() {
           content: "";
           position: absolute;
           top: 0; left: 0; right: 0; bottom: 0;
-          background-image: url(${bgImage});
+          background-image: url('/bg.png');
           background-size: cover;
           background-position: center;
           filter: blur(8px);
@@ -451,6 +480,17 @@ export default function ContactForm() {
             padding-bottom: 10px;
           }
         }
+        @media (max-width: 768px) {
+          .contact-section-container {
+            padding: 56px 20px !important;
+          }
+          .contact-inner-wrapper {
+            gap: 32px !important;
+          }
+          #contact h2 {
+            font-size: clamp(24px, 6vw, 38px) !important;
+          }
+        }
         @media (max-width: 500px) {
           .form-row {
             grid-template-columns: 1fr !important;
@@ -458,8 +498,14 @@ export default function ContactForm() {
           .contact-benefits {
             grid-template-columns: 1fr !important;
           }
+          .contact-section-container {
+            padding: 44px 16px !important;
+          }
+          .response-time-grid {
+            grid-template-columns: 1fr 1fr !important;
+          }
         }
-      `}</style>
+      `}} />
     </section>
   );
 }

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { X, Play, RefreshCw, AlertTriangle, CheckCircle, Download } from 'lucide-react';
 
@@ -13,8 +15,7 @@ const INGREDIENTS = [
 ];
 
 export default function SimulatorModal({ isOpen, onClose }) {
-  if (!isOpen) return null;
-
+  // ── All hooks must be called unconditionally (React Rules of Hooks) ──
   const [productType, setProductType] = useState('Skincare');
   const [selectedIngredients, setSelectedIngredients] = useState(['hyaluronic']);
   const [concentration, setConcentration] = useState(2.0); // %
@@ -33,8 +34,11 @@ export default function SimulatorModal({ isOpen, onClose }) {
 
   // Recalculate metrics in real-time when inputs change
   useEffect(() => {
-    calculateFormula();
-  }, [productType, selectedIngredients, concentration, pH]);
+    if (isOpen) calculateFormula();
+  }, [productType, selectedIngredients, concentration, pH, isOpen]);
+
+  // Guard: render nothing when closed (MUST be after all hooks)
+  if (!isOpen) return null;
 
   const toggleIngredient = (id) => {
     if (selectedIngredients.includes(id)) {

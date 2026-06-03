@@ -1,17 +1,13 @@
+'use client';
+
 import React, { useState } from 'react';
 import { X, Sparkles, Check, Heart, Shield, ShoppingBag, Eye, ArrowRight } from 'lucide-react';
-import heroProductShowcase from '../assets/hero_product_showcase.png';
-import catSkincare from '../assets/cat_skincare.png';
-import catHaircare from '../assets/cat_haircare.png';
-import catBodycare from '../assets/cat_bodycare.png';
-import catLuxury from '../assets/cat_luxury.png';
-import catColor from '../assets/cat_color.png';
 
 const CATEGORY_DETAILS = {
   skincare: {
     title: 'Skincare Formulations',
     desc: 'Clinical, aesthetic, and botanical formulations built with highly stable active ingredients.',
-    img: catSkincare,
+    img: '/cat_skincare.png',
     items: [
       { name: 'Anti-Aging Serums', desc: 'Retinol, Bakuchiol, and Peptide delivery systems.' },
       { name: 'Barrier Repair Creams', desc: 'Ceramide NP, Squalane, and Niacinamide emulsions.' },
@@ -22,7 +18,7 @@ const CATEGORY_DETAILS = {
   haircare: {
     title: 'Haircare Formulations',
     desc: 'Scalp therapies, nourishing conditioners, and styling science engineered for efficacy.',
-    img: catHaircare,
+    img: '/cat_haircare.png',
     items: [
       { name: 'Scalp Revitalizing Serums', desc: 'Caffeine, Peptides, and Rosemary scalp treatments.' },
       { name: 'Deep Conditioning Masks', desc: 'Keratin, Argan Oil, and Amino Acid complex reconstructors.' },
@@ -32,47 +28,47 @@ const CATEGORY_DETAILS = {
   },
   bodycare: {
     title: 'Bodycare Formulations',
-    desc: 'Vibrant, sensory, and highly functional formulations for body and wellness routines.',
-    img: catBodycare,
+    desc: 'Sensory-driven formulations developed for body wellness and daily care routines.',
+    img: '/cat_bodycare.png',
     items: [
-      { name: 'Smoothing Body Lotions', desc: 'Salicylic Acid (BHA) and Lactic Acid (AHA) exfoliating milks.' },
-      { name: 'Calming Massage Oils', desc: 'Lavender, Centella Asiatica, and Sweet Almond soothing blends.' },
-      { name: 'Nourishing Body Butters', desc: 'Shea Butter and Cocoa Butter whip emulsions with rich sensory profiles.' },
-      { name: 'Exfoliating Body Scrubs', desc: 'Sugar and salt-in-oil polishes with emulsified rinse-off tech.' }
+      { name: 'Smoothing Body Lotions', desc: 'Salicylic Acid (BHA) and Lactic Acid (AHA) enriched lotions.' },
+      { name: 'Calming Massage Oils', desc: 'Lavender, Centella Asiatica, and Sweet Almond blends.' },
+      { name: 'Nourishing Body Butters', desc: 'Shea Butter and Cocoa Butter-rich moisturising systems.' },
+      { name: 'Exfoliating Body Scrubs', desc: 'Sugar and salt-based exfoliators with rinse-off technology.' }
     ]
   },
   luxury: {
     title: 'Luxury & Premium Cosmetics',
-    desc: 'High-end cosmetic formulations featuring rare botanical extracts, gold flakes, and premium sensory elements.',
-    img: catLuxury,
+    desc: 'Premium cosmetic formulations featuring rare botanicals and elevated sensory experiences.',
+    img: '/cat_luxury.png',
     items: [
-      { name: '24K Gold Cellular Serums', desc: 'Suspended gold nanoparticles with Coenzyme Q10 and Rose Distillate.' },
-      { name: 'Bio-Fermented Elixirs', desc: 'Probiotic extracts and Saccharomyces ferments for skin longevity.' },
-      { name: 'Silk Protein Night Creams', desc: 'Rich water-in-oil creams with real silk proteins and orchid extracts.' },
-      { name: 'Premium Face Oils', desc: 'Squalane, Rosehip, and Marula active oil blends for deep radiance.' }
+      { name: '24K Gold Cellular Serums', desc: 'Gold-infused serums with Coenzyme Q10 and Rose Distillate.' },
+      { name: 'Bio-Fermented Elixirs', desc: 'Fermented actives designed for advanced skin conditioning.' },
+      { name: 'Silk Protein Night Creams', desc: 'Rich creams infused with silk proteins and orchid extracts.' },
+      { name: 'Premium Face Oils', desc: 'Squalane, Rosehip, and Marula oil blends for enhanced radiance.' }
     ]
   },
   color: {
     title: 'Color Cosmetics',
-    desc: 'Pigmented formulations combining active skincare benefits with flawless visual performance.',
-    img: catColor,
+    desc: 'Pigmented formulations that combine cosmetic performance with skincare benefits.',
+    img: '/cat_color.png',
     items: [
-      { name: 'Serum Foundations', desc: 'SPF-integrated foundation with Hyaluronic Acid and Niacinamide.' },
-      { name: 'Hydrating Lip Oils', desc: 'Vibrant tinted lip oils with jojoba, avocado, and peptide plumpers.' },
-      { name: 'Liquid Illuminators', desc: 'Mica-based fluid highlighters suspended in an ultra-light gel-cream.' },
-      { name: 'Setting Sprays', desc: 'Film-forming polymer sprays with Centella extract for 16-hour lock.' }
+      { name: 'Serum Foundations', desc: 'SPF-integrated foundations with Hyaluronic Acid and Niacinamide.' },
+      { name: 'Hydrating Lip Oils', desc: 'Tinted lip oils enriched with jojoba, avocado, and peptide complexes.' },
+      { name: 'Liquid Illuminators', desc: 'Lightweight highlighting formulas with refined mica pigments.' },
+      { name: 'Setting Sprays', desc: 'Long-wear setting sprays with Centella extract technology.' }
     ]
   }
 };
 
 const INDUSTRY_ITEMS = [
-  { key: 'd2c', title: 'D2C Beauty Brands', desc: 'We help digital-first beauty brands launch speed-to-market products. We offer pre-developed stable formulation libraries, ingredient sourcing, and custom packaging advice to help brands launch in record time.' },
-  { key: 'dermatology', title: 'Dermatology Companies', desc: 'We formulate prescription-strength clinical cosmetics. We design formulations around dermatologist-backed actives, conducting stability runs, pH optimization, and clinical safety packaging tests.' },
-  { key: 'wellness', title: 'Wellness & Ayurveda', desc: 'We bridge ancient herbal wisdom with modern formulation science. We create clean, botanical, and organic cosmetics using standardized botanical extracts and safe green preservatives.' },
-  { key: 'spa', title: 'Spa & Salon Chains', desc: 'We engineer professional-grade bulk treatments and backbar products. We optimize viscosity for salon equipment compatibility and formulate rich, sensory massage mediums, facial clays, and scalp treatments.' },
-  { key: 'ecommerce', title: 'Ecommerce Brands', desc: 'We assist high-volume e-commerce platforms in creating private label brands. We focus on cost-efficient formulations, high-volume manufacturing setups, and secure supply chains.' },
-  { key: 'pharma', title: 'Pharma Companies', desc: 'We design cosmetic formulations requiring rigorous pharmaceutical standards, medical claims, and cleanroom packaging. We consult on aseptic plant designs and drug-cosmetic regulations.' },
-  { key: 'retail', title: 'Luxury Retail Chains', desc: 'We develop ultra-premium beauty brands for luxury department store positioning. We engineer elegant packaging compatibility, rare ingredient profiles, and prestige sensory textures.' }
+  { key: 'd2c', title: 'D2C Beauty Brands', desc: 'We help digital-first beauty brands accelerate product launches through stable formulation libraries, ingredient sourcing support, packaging guidance, and commercialization planning.' },
+  { key: 'dermatology', title: 'Dermatology Companies', desc: 'We develop clinical cosmetic formulations centered around dermatologist-backed active ingredients, scientific validation, stability testing, and patient-focused product performance.' },
+  { key: 'wellness', title: 'Wellness & Ayurveda Brands', desc: 'We combine traditional botanical knowledge with modern formulation science to create clean, effective, and scalable wellness products.' },
+  { key: 'spa', title: 'Spa & Salon Chains', desc: 'We formulate professional-grade products designed for treatment rooms, salons, spas, and wellness centers, focusing on performance, consistency, and sensory appeal.' },
+  { key: 'ecommerce', title: 'Ecommerce Brands', desc: 'We assist high-growth ecommerce businesses with private label development, manufacturing strategies, scalable production systems, and supply chain planning.' },
+  { key: 'pharma', title: 'Pharma Companies', desc: 'We support pharmaceutical organizations through advanced cosmetic product development, cleanroom manufacturing strategies, regulatory alignment, and quality-focused production planning.' },
+  { key: 'retail', title: 'Luxury Retail Chains', desc: 'We create premium beauty concepts supported by sophisticated formulations, packaging compatibility assessments, and prestige product positioning.' }
 ];
 
 export default function ProductExpertise() {
@@ -96,7 +92,7 @@ export default function ProductExpertise() {
         {/* RIGHT IMMERSIVE IMAGE LAYER (60% width block) */}
         <div className="expertise-banner-right">
           <img 
-            src={heroProductShowcase} 
+            src="/hero_product_showcase.png"
             alt="EGC cosmetics laboratory product showcase" 
             className="expertise-banner-img"
           />
@@ -158,7 +154,7 @@ export default function ProductExpertise() {
               margin: 0,
               fontWeight: '400'
             }}>
-              Our formulation laboratory develops innovative cosmetic and personal care products across multiple beauty and wellness categories for emerging brands, manufacturers, and global beauty businesses.
+              Our formulation laboratory develops innovative cosmetic and personal care products across multiple beauty, wellness, and consumer care categories for emerging brands, manufacturers, and global beauty businesses.
             </p>
 
             {/* Premium Gold Catalog Button */}
@@ -293,7 +289,7 @@ export default function ProductExpertise() {
               Empowering Global Beauty Operators
             </h2>
             <p style={{ fontSize: '16px', color: '#5c526b', lineHeight: '1.6', maxWidth: '640px', margin: 0 }}>
-              We support businesses across multiple cosmetic and personal care segments with formulation expertise, manufacturing consulting, regulatory support, and commercialization strategies.
+              We support businesses across multiple cosmetic and personal care sectors through formulation expertise, manufacturing consulting, regulatory support, factory planning, and commercialization strategies.
             </p>
           </div>
 
@@ -491,7 +487,7 @@ export default function ProductExpertise() {
         </div>
       )}
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{__html:`
         .expertise-banner {
           position: relative;
           display: flex;
@@ -599,6 +595,25 @@ export default function ProductExpertise() {
             grid-template-columns: repeat(4, 1fr) !important;
           }
         }
+        @media (max-width: 768px) {
+          #expertise {
+            padding-bottom: 56px !important;
+          }
+          #expertise > div {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            margin-top: 40px !important;
+          }
+          #expertise h2 {
+            font-size: clamp(24px, 6vw, 38px) !important;
+          }
+          .expertise-banner-left {
+            padding: 44px 20px 32px !important;
+          }
+          .industries-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+          }
+        }
         @media (max-width: 600px) {
           .category-circles-grid {
             grid-template-columns: repeat(2, 1fr) !important;
@@ -610,7 +625,19 @@ export default function ProductExpertise() {
             grid-template-columns: 1fr !important;
           }
         }
-      `}</style>
+        @media (max-width: 480px) {
+          .expertise-banner-left {
+            padding: 36px 16px 28px !important;
+          }
+          .category-circles-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 12px !important;
+          }
+          .industries-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+      `}} />
     </section>
   );
 }

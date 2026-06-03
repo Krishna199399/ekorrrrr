@@ -1,17 +1,14 @@
+'use client';
+
 import React, { useState } from 'react';
 import { X, Wrench, Factory, Activity, ClipboardList, Check, ArrowRight } from 'lucide-react';
-import factoryConveyor from '../assets/ChatGPT Image Jun 1, 2026, 07_14_44 PM.png';
-import facBoutique from '../assets/fac_boutique.png';
-import facCosmetic from '../assets/fac_cosmetic.png';
-import facIndustrial from '../assets/fac_industrial.png';
-import facTurnkey from '../assets/fac_turnkey.png';
 
 
 const FACTORY_DETAILS = {
   boutique: {
     title: 'Boutique R&D Plant',
     capacity: '5,000 - 10,000 bottles/day',
-    img: facBoutique,
+    img: '/fac_boutique.png',
     icon: <Wrench size={32} style={{ color: '#b5893b' }} />,
     specs: {
       area: '2,500 - 5,000 sq. ft.',
@@ -24,7 +21,7 @@ const FACTORY_DETAILS = {
   manufacturing: {
     title: 'Cosmetic Manufacturing Plant',
     capacity: '10,000 - 50,000 bottles/day',
-    img: facCosmetic,
+    img: '/fac_cosmetic.png',
     icon: <Factory size={32} style={{ color: '#b5893b' }} />,
     specs: {
       area: '10,000 - 25,000 sq. ft.',
@@ -37,7 +34,7 @@ const FACTORY_DETAILS = {
   industrial: {
     title: 'Global Industrial Plant',
     capacity: '50,000 - 100,000+ bottles/day',
-    img: facIndustrial,
+    img: '/fac_industrial.png',
     icon: <Activity size={32} style={{ color: '#b5893b' }} />,
     specs: {
       area: '40,000 - 100,000+ sq. ft.',
@@ -50,7 +47,7 @@ const FACTORY_DETAILS = {
   turnkey: {
     title: 'Turnkey Project Execution',
     capacity: 'End-to-End Service',
-    img: facTurnkey,
+    img: '/fac_turnkey.png',
     icon: <ClipboardList size={32} style={{ color: '#b5893b' }} />,
     specs: {
       area: 'Varies by plant scale.',
@@ -91,7 +88,7 @@ export default function FactorySetup() {
         {/* RIGHT IMMERSIVE IMAGE LAYER (60% width block) */}
         <div className="factory-banner-right">
           <img 
-            src={factoryConveyor} 
+            src="/ChatGPT Image Jun 1, 2026, 07_14_44 PM.png"
             alt="EGC sterile cosmetic conveyor compounding unit" 
             className="factory-banner-img"
           />
@@ -382,7 +379,7 @@ export default function FactorySetup() {
         </div>
       )}
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{__html:`
         .factory-banner {
           position: relative;
           display: flex;
@@ -481,7 +478,28 @@ export default function FactorySetup() {
             grid-template-columns: 1fr !important;
           }
         }
-      `}</style>
+        @media (max-width: 768px) {
+          #factory {
+            padding-bottom: 56px !important;
+          }
+          #factory > div {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            margin-top: 40px !important;
+          }
+          .factory-banner-left {
+            padding: 44px 20px 32px !important;
+          }
+          .plant-cards-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .factory-banner-left {
+            padding: 36px 16px 28px !important;
+          }
+        }
+      `}} />
     </section>
   );
 }

@@ -1,0 +1,281 @@
+/* EGC Ekora Global Consulting Design System */
+
+:root {
+  /* Harmonized premium colors from mockups */
+  --primary-gold: #b5893b;
+  --primary-gold-hover: #9c732c;
+  --dark-purple: #1b0b30;
+  --dark-purple-light: #2d184d;
+  --bg-cream: #fbfaf7;
+  --bg-beige: #f2efe9;
+  --text-dark: #2d2736;
+  --text-light: #fbfaf7;
+  --text-muted: #7c728a;
+  
+  /* Fonts */
+  --font-serif: 'Syne', sans-serif; /* Display font for headings and prominent text */
+  --font-sans: 'Outfit', sans-serif; /* Sans-serif font for body text and general content */
+  
+  /* Layout */
+  --max-width: 1440px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: #0e071a; /* Dark background matching the premium theme */
+  color: var(--text-dark);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Base layout container for the page */
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-cream);
+}
+
+/* Centered layout for mockup sections */
+.mockup-section {
+  position: relative;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  background-color: var(--bg-cream);
+}
+
+/* Image scaling to match relative coords */
+.mockup-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+
+/* Interactive hotspot overlays */
+.hotspot {
+  position: absolute;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  outline: none;
+  z-index: 10;
+  transition: all 0.25s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+/* Optional hover visual indicator for debug/ux helper */
+.hotspot-debug {
+  background-color: rgba(181, 137, 59, 0.15);
+  border: 1px dashed var(--primary-gold);
+}
+
+.hotspot:hover {
+  background-color: rgba(181, 137, 59, 0.1);
+  box-shadow: 0 0 15px rgba(181, 137, 59, 0.3);
+}
+
+/* Form inputs styling overlays */
+.form-input-overlay {
+  position: absolute;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  color: var(--text-dark);
+  padding: 8px 12px;
+  z-index: 10;
+}
+
+.form-input-overlay::placeholder {
+  color: #a09aa8;
+  opacity: 0; /* Let background image placeholder show through, or set opacity on focus */
+}
+
+.form-input-overlay:focus {
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 0 2px var(--primary-gold);
+  border-radius: 4px;
+}
+
+/* Custom modal styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(27, 11, 48, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  background: var(--bg-cream);
+  border-radius: 16px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid rgba(181, 137, 59, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  position: relative;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-dark);
+  transition: transform 0.2s;
+}
+
+.modal-close:hover {
+  transform: rotate(90deg);
+  color: var(--primary-gold);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-purple);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-gold);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-gold-hover);
+}
+
+/* Helper styles for interactive overlay modals */
+.info-modal-header {
+  padding: 30px 40px 20px;
+  border-bottom: 1px solid rgba(181, 137, 59, 0.2);
+  background: var(--dark-purple);
+  color: var(--text-light);
+}
+
+.info-modal-title {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  color: var(--primary-gold);
+}
+
+.info-modal-body {
+  padding: 40px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+/* Custom styles for R&D simulator */
+.simulator-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .simulator-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+.simulator-title {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  color: var(--primary-gold);
+  margin-bottom: 15px;
+}
+
+.ingredient-card {
+  padding: 15px;
+  background: white;
+  border: 1px solid #e2dfd8;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ingredient-card.selected {
+  border-color: var(--primary-gold);
+  background: rgba(181, 137, 59, 0.05);
+  box-shadow: 0 0 10px rgba(181, 137, 59, 0.1);
+}
+
+.ingredient-card:hover {
+  transform: translateY(-2px);
+}
+
+.metric-bar-container {
+  background: #e2dfd8;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.metric-bar-fill {
+  height: 100%;
+  transition: width 0.4s ease-out;
+}
+
+/* Responsive navigation bar */
+.nav-link {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s;
+  letter-spacing: 0.5px;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--primary-gold);
+}

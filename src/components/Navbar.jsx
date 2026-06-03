@@ -1,7 +1,9 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X, PhoneCall, ArrowRight } from 'lucide-react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import logoBlack from '../assets/logo_black.png';
+import { useRouter, usePathname } from 'next/navigation';
+import { useSimulator } from '../context/SimulatorContext';
 
 const NAV_ITEMS = [
   { label: 'ABOUT', target: 'about' },
@@ -11,21 +13,17 @@ const NAV_ITEMS = [
   { label: 'PORTFOLIO', target: 'factory' }
 ];
 
-export default function Navbar({ onOpenSimulator }) {
-  const navigate = useNavigate();
-  const location = useLocation();
+export default function Navbar() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const { openSimulator } = useSimulator();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -33,17 +31,17 @@ export default function Navbar({ onOpenSimulator }) {
   const handleNavClick = (target) => {
     setMobileMenuOpen(false);
     if (target === 'home') {
-      navigate('/');
+      router.push('/');
     } else if (target === 'about') {
-      navigate('/about');
+      router.push('/about');
     } else if (target === 'capabilities') {
-      navigate('/services');
+      router.push('/services');
     } else if (target === 'expertise') {
-      navigate('/product-expertise');
+      router.push('/product-expertise');
     } else if (target === 'rd') {
-      navigate('/rd-lab');
+      router.push('/rd-lab');
     } else if (target === 'factory') {
-      navigate('/portfolio');
+      router.push('/portfolio');
     } else if (target === 'contact') {
       const el = document.getElementById('contact');
       if (el) {
@@ -53,13 +51,12 @@ export default function Navbar({ onOpenSimulator }) {
   };
 
   const getActiveSection = () => {
-    const path = location.pathname;
-    if (path === '/about') return 'about';
-    if (path === '/services') return 'capabilities';
-    if (path === '/product-expertise') return 'expertise';
-    if (path === '/rd-lab') return 'rd';
-    if (path === '/portfolio') return 'factory';
-    if (path === '/') return 'home';
+    if (pathname === '/about') return 'about';
+    if (pathname === '/services') return 'capabilities';
+    if (pathname === '/product-expertise') return 'expertise';
+    if (pathname === '/rd-lab') return 'rd';
+    if (pathname === '/portfolio') return 'factory';
+    if (pathname === '/') return 'home';
     return '';
   };
 
@@ -88,7 +85,7 @@ export default function Navbar({ onOpenSimulator }) {
         style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', cursor: 'pointer' }}
       >
         <img 
-          src={logoBlack} 
+          src="/logo_black.png"
           alt="EGC Logo" 
           style={{ height: '48px', width: 'auto', display: 'block' }} 
         />
@@ -120,7 +117,7 @@ export default function Navbar({ onOpenSimulator }) {
       {/* Action Buttons */}
       <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }} className="desktop-actions">
         <button
-          onClick={onOpenSimulator}
+          onClick={openSimulator}
           style={{
             padding: '8px 16px',
             background: 'transparent',
@@ -187,7 +184,7 @@ export default function Navbar({ onOpenSimulator }) {
           flexDirection: 'column',
           gap: '15px',
           zIndex: 49
-        }}>
+        }} className="mobile-menu-drawer">
           {NAV_ITEMS.map((item) => (
             <button
               key={item.target}
@@ -208,7 +205,7 @@ export default function Navbar({ onOpenSimulator }) {
           ))}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '15px' }}>
             <button
-              onClick={() => { setMobileMenuOpen(false); onOpenSimulator(); }}
+              onClick={() => { setMobileMenuOpen(false); openSimulator(); }}
               style={{
                 padding: '12px',
                 background: 'transparent',
@@ -240,7 +237,7 @@ export default function Navbar({ onOpenSimulator }) {
       )}
 
       {/* Inline styles for responsive menu */}
-      <style>{`
+      <style dangerouslySetInnerHTML={{__html:`
         @media (max-width: 1024px) {
           .desktop-menu, .desktop-actions {
             display: none !important;
@@ -249,7 +246,15 @@ export default function Navbar({ onOpenSimulator }) {
             display: block !important;
           }
         }
-      `}</style>
+        @media (max-width: 480px) {
+          nav {
+            padding: 0 16px !important;
+          }
+          .mobile-menu-drawer {
+            padding: 20px 16px !important;
+          }
+        }
+      `}} />
     </nav>
   );
 }

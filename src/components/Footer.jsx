@@ -1,7 +1,8 @@
+'use client';
+
 import React, { useState } from 'react';
 import { X, Award, ShieldAlert, ArrowUp, Mail, Phone, Globe, Calendar, FileText, MapPin } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import logoWhite from '../assets/logo_white.png';
+import Link from 'next/link';
 
 const CERT_DETAILS = {
   gmp: {
@@ -138,7 +139,7 @@ export default function Footer() {
           <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
               <img 
-                src={logoWhite} 
+                src="/logo_white.png"
                 alt="EGC Logo" 
                 style={{ height: '42px', width: 'auto', display: 'block' }} 
               />
@@ -242,31 +243,31 @@ export default function Footer() {
             <div>
               <h5 style={{ color: 'white', fontWeight: 'bold', fontSize: '13px', marginBottom: '15px', textTransform: 'uppercase' }}>Company</h5>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px', padding: 0 }}>
-                <li><Link to="/about" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>About Us</Link></li>
-                <li><Link to="/about" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Our Mission</Link></li>
-                <li><Link to="/about" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Leadership</Link></li>
-                <li><Link to="/about" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Careers</Link></li>
-                <li><Link to="/about" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>News & Press</Link></li>
+                <li><Link href="/about" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>About Us</Link></li>
+                <li><Link href="/about" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Our Mission</Link></li>
+                <li><Link href="/about" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Leadership</Link></li>
+                <li><Link href="/about" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Careers</Link></li>
+                <li><Link href="/about" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>News & Press</Link></li>
               </ul>
             </div>
             <div>
               <h5 style={{ color: 'white', fontWeight: 'bold', fontSize: '13px', marginBottom: '15px', textTransform: 'uppercase' }}>Our Services</h5>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px', padding: 0 }}>
-                <li><Link to="/services" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>R&D & Formulation</Link></li>
-                <li><Link to="/portfolio" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Factory Setup</Link></li>
-                <li><Link to="/services" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Regulatory</Link></li>
-                <li><Link to="/services" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Product Dev</Link></li>
-                <li><Link to="/services" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Private Label</Link></li>
+                <li><Link href="/services" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>R&D & Formulation</Link></li>
+                <li><Link href="/portfolio" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Factory Setup</Link></li>
+                <li><Link href="/services" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Regulatory</Link></li>
+                <li><Link href="/services" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Product Dev</Link></li>
+                <li><Link href="/services" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Private Label</Link></li>
               </ul>
             </div>
             <div>
               <h5 style={{ color: 'white', fontWeight: 'bold', fontSize: '13px', marginBottom: '15px', textTransform: 'uppercase' }}>Resources</h5>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px', padding: 0 }}>
-                <li><Link to="/rd-lab" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Insights / Blog</Link></li>
-                <li><Link to="/rd-lab" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>White Papers</Link></li>
-                <li><Link to="/rd-lab" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Case Studies</Link></li>
-                <li><Link to="/rd-lab" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>FAQs</Link></li>
-                <li><Link to="/rd-lab" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Glossary</Link></li>
+                <li><Link href="/rd-lab" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Insights / Blog</Link></li>
+                <li><Link href="/rd-lab" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>White Papers</Link></li>
+                <li><Link href="/rd-lab" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Case Studies</Link></li>
+                <li><Link href="/rd-lab" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>FAQs</Link></li>
+                <li><Link href="/rd-lab" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Glossary</Link></li>
               </ul>
             </div>
             <div>
@@ -382,7 +383,7 @@ export default function Footer() {
       )}
 
       {/* Back to top button floating styling */}
-      <style>{`
+      <style dangerouslySetInnerHTML={{__html:`
         @media (max-width: 1024px) {
           .footer-links-grid {
             grid-template-columns: 1fr !important;
@@ -400,6 +401,24 @@ export default function Footer() {
             flex-direction: column !important;
             gap: 10px !important;
             text-align: left !important;
+          }
+        }
+        @media (max-width: 768px) {
+          footer > div:first-of-type {
+            padding: 24px 20px !important;
+          }
+          footer > div + div {
+            padding: 40px 20px 28px !important;
+          }
+          .newsletter-row {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+          .newsletter-form {
+            width: 100% !important;
+          }
+          .newsletter-form input {
+            width: 100% !important;
           }
         }
         @media (max-width: 600px) {
@@ -425,7 +444,21 @@ export default function Footer() {
             grid-template-columns: 1fr 1fr !important;
           }
         }
-      `}</style>
+        @media (max-width: 480px) {
+          footer > div:first-of-type {
+            padding: 20px 16px !important;
+          }
+          footer > div + div {
+            padding: 36px 16px 24px !important;
+          }
+          .footer-links-columns {
+            grid-template-columns: 1fr 1fr !important;
+          }
+          .newsletter-form {
+            flex-direction: column !important;
+          }
+        }
+      `}} />
     </footer>
   );
 }

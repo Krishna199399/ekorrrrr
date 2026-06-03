@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import ResearchInnovation from '../components/ResearchInnovation';
 import ContactForm from '../components/ContactForm';
@@ -14,7 +16,7 @@ const INGREDIENTS = [
   { id: 'centella', name: 'Centella Asiatica', category: 'Soothing', desc: 'Herbal extract that calms inflammation and redness.', pHMin: 5.0, pHMax: 7.0, incompatible: [], benefits: { antiAging: 30, brightening: 25, hydration: 60 } }
 ];
 
-export default function RdLabPage({ onOpenSimulator }) {
+export default function RdLabPage() {
   const [productType, setProductType] = useState('Skincare');
   const [selectedIngredients, setSelectedIngredients] = useState(['hyaluronic']);
   const [concentration, setConcentration] = useState(2.0); // %
@@ -142,17 +144,10 @@ export default function RdLabPage({ onOpenSimulator }) {
   };
 
   return (
-    <div style={{ background: 'linear-gradient(135deg, #f5f2fc 0%, #ebe5f7 100%)', color: '#2d2736', paddingTop: '80px' }}>
+    <div className="page-container">
       
       {/* 1. Page Hero */}
-      <div style={{
-        background: 'linear-gradient(135deg, #1b0b30 0%, #2d184d 100%)',
-        color: 'white',
-        padding: '80px 40px',
-        textAlign: 'center',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
+      <div className="page-hero">
         <div style={{
           position: 'absolute',
           top: 0, left: 0, right: 0, bottom: 0,
@@ -167,13 +162,13 @@ export default function RdLabPage({ onOpenSimulator }) {
             R&D Innovation Lab
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '16px', lineHeight: '1.6', maxWidth: '600px', margin: '0 auto' }}>
-            Inside EGC\'s state-of-the-art cleanroom laboratories, where premium raw materials are refined into advanced bio-actives and dermal emulsifiers.
+            Inside EGC's state-of-the-art cleanroom laboratories, where premium raw materials are refined into advanced bio-actives and dermal emulsifiers.
           </p>
         </div>
       </div>
 
       {/* 2. Embedded Simulator Portal */}
-      <div style={{ padding: '80px 40px', maxWidth: '1000px', margin: '0 auto' }}>
+      <div className="page-section-narrow">
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <span style={{ color: '#b5893b', fontWeight: 'bold', letterSpacing: '1px', fontSize: '11px', textTransform: 'uppercase' }}>
             Interactive Formulation Sandbox
@@ -197,9 +192,9 @@ export default function RdLabPage({ onOpenSimulator }) {
             <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.5)' }}>Digital Sandbox Desk</span>
           </div>
 
-          <div style={{ padding: '30px' }}>
+          <div style={{ padding: '30px' }} className="simulator-body-wrapper">
             {formulationState !== 'success' ? (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: '30px' }}>
+              <div className="simulator-grid-layout">
                 
                 {/* Left Inputs */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', textAlign: 'left' }}>
@@ -347,6 +342,7 @@ export default function RdLabPage({ onOpenSimulator }) {
                   <div style={{ minHeight: '60px' }}>
                     {warnings.length > 0 ? (
                       <div style={{ padding: '8px', background: '#ffebee', borderRadius: '4px', fontSize: '10.5px', color: '#c62828', display: 'flex', gap: '5px' }}>
+                        <img src="/warning-icon.png" alt="" style={{ display: 'none' }} /> {/* keep layouts clean */}
                         <AlertTriangle size={14} style={{ flexShrink: 0 }} />
                         <span>{warnings[0]}</span>
                       </div>
@@ -381,10 +377,62 @@ export default function RdLabPage({ onOpenSimulator }) {
       </div>
 
       {/* 3. Original Research & Innovation component */}
-      <ResearchInnovation onOpenSimulator={onOpenSimulator} />
+      <ResearchInnovation />
 
       {/* 4. Contact Lead Form */}
       <ContactForm />
+
+      <style dangerouslySetInnerHTML={{__html:`
+        .page-container {
+          background: linear-gradient(135deg, #f5f2fc 0%, #ebe5f7 100%);
+          color: #2d2736;
+          padding-top: 80px;
+        }
+        .page-hero {
+          background: linear-gradient(135deg, #1b0b30 0%, #2d184d 100%);
+          color: white;
+          padding: 80px 40px;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+        }
+        .page-section-narrow {
+          padding: 80px 40px;
+          max-width: 1000px;
+          margin: 0 auto;
+        }
+        .simulator-grid-layout {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+          gap: 30px;
+        }
+        @media (max-width: 768px) {
+          .page-hero {
+            padding: 60px 20px;
+          }
+          .page-section-narrow {
+            padding: 48px 20px;
+          }
+          .simulator-body-wrapper {
+            padding: 20px !important;
+          }
+          .simulator-grid-layout {
+            grid-template-columns: 1fr !important;
+            gap: 20px;
+          }
+        }
+        @media (max-width: 480px) {
+          .page-hero {
+            padding: 44px 16px;
+          }
+          .page-section-narrow {
+            padding: 36px 16px;
+          }
+          .simulator-body-wrapper {
+            padding: 16px !important;
+          }
+        }
+      `}} />
     </div>
   );
 }

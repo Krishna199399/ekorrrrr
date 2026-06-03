@@ -1,6 +1,8 @@
+'use client';
+
 import React from 'react';
-import { Star, MessageSquare, PhoneCall, Mail, Calendar, MapPin, ArrowRight } from 'lucide-react';
-import ctaBottles from '../assets/ChatGPT Image Jun 1, 2026, 08_11_46 PM.png';
+import { Star, MessageSquare, ArrowRight, Calendar, Mail, PhoneCall, MapPin } from 'lucide-react';
+
 
 const REVIEWS = [
   {
@@ -57,7 +59,10 @@ export default function Testimonials() {
             Proven Excellence. Trusted Worldwide.
           </h2>
           <p style={{ fontSize: '16px', color: '#5c526b', maxWidth: '700px', margin: 0, lineHeight: '1.6' }}>
-            We partner with visionary beauty brands, manufacturers, and organizations around the world to deliver innovative solutions, ensure compliance, and drive sustainable growth.
+            We partner with beauty brands, manufacturers, investors, wellness companies, and product innovators to transform ideas into commercially successful cosmetic businesses.
+          </p>
+          <p style={{ fontSize: '15px', color: '#7c728a', maxWidth: '700px', margin: 0, lineHeight: '1.6' }}>
+            Our expertise spans formulation development, manufacturing strategy, factory planning, regulatory compliance, commercialization support, and global expansion consulting.
           </p>
         </div>
 
@@ -186,7 +191,7 @@ export default function Testimonials() {
             }} className="cta-frame-back" />
             
             <img 
-              src={ctaBottles} 
+              src="/ChatGPT Image Jun 1, 2026, 08_11_46 PM.png"
               alt="Luxury EGC Gold formulations bottles" 
               style={{ 
                 width: '100%', 
@@ -295,7 +300,7 @@ export default function Testimonials() {
       </div>
 
       {/* Marquee animation & CTA animations */}
-      <style>{`
+      <style dangerouslySetInnerHTML={{__html:`
         @keyframes marquee {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
@@ -324,12 +329,32 @@ export default function Testimonials() {
             margin-bottom: 20px;
           }
         }
+        @media (max-width: 768px) {
+          #testimonials {
+            padding: 56px 20px !important;
+          }
+          #testimonials h2 {
+            font-size: clamp(24px, 6vw, 38px) !important;
+          }
+          .reviews-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .cta-banner {
+            padding: 32px 24px !important;
+          }
+        }
         @media (max-width: 500px) {
           .cta-contacts-grid {
             grid-template-columns: 1fr !important;
           }
+          #testimonials {
+            padding: 44px 16px !important;
+          }
+          .cta-banner {
+            padding: 28px 16px !important;
+          }
         }
-      `}</style>
+      `}} />
     </section>
   );
 }

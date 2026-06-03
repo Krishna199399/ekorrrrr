@@ -1,7 +1,9 @@
+'use client';
+
 import React from 'react';
 import { FlaskConical, ArrowRight } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import heroProducts from '../assets/hero_products.png';
+import { useRouter } from 'next/navigation';
+import { useSimulator } from '../context/SimulatorContext';
 
 /* ─── Laurel Wreath Seal ─────────────────────────────────────────── */
 const LaurelSeal = ({ lines }) => (
@@ -40,15 +42,16 @@ const LaurelSeal = ({ lines }) => (
 );
 
 /* ─── Hero ───────────────────────────────────────────────────────── */
-export default function Hero({ onOpenSimulator }) {
-  const navigate = useNavigate();
+export default function Hero() {
+  const router = useRouter();
+  const { openSimulator } = useSimulator();
   const handleExploreClick = () => {
-    navigate('/services');
+    router.push('/services');
   };
 
   return (
     <>
-      <style>{`
+      <style dangerouslySetInnerHTML={{__html:`
         /* ── Root ── */
         .hero-root {
           margin-top: 80px;
@@ -214,7 +217,11 @@ export default function Hero({ onOpenSimulator }) {
           .hero-left  { padding: 44px 22px 36px; }
           .hero-right { height: 74vw; }
         }
-      `}</style>
+        @media (max-width: 375px) {
+          .hero-left  { padding: 36px 16px 28px; }
+          .hero-right { height: 80vw; }
+        }
+      `}} />
 
       <section id="home" className="hero-root">
 
@@ -263,9 +270,9 @@ export default function Hero({ onOpenSimulator }) {
               fontSize: '14.5px', lineHeight: '1.78', color: '#5c5069',
               maxWidth: '380px', margin: 0,
             }}>
-              We design award-winning cosmetic formulations, plan state-of-the-art
-              automated production factories, and guide high-growth D2C brands from
-              concept to global distribution.
+              We help cosmetic brands transform ideas into commercially successful
+              products through formulation science, manufacturing strategy, factory
+              planning, regulatory compliance, and business growth consulting.
             </p>
 
             {/* CTAs */}
@@ -295,7 +302,7 @@ export default function Hero({ onOpenSimulator }) {
               </button>
 
               <button
-                onClick={onOpenSimulator}
+                onClick={openSimulator}
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: '7px',
                   padding: '11px 22px',
@@ -335,7 +342,7 @@ export default function Hero({ onOpenSimulator }) {
         {/* ── RIGHT: immersive product image ── */}
         <div className="hero-right">
           <img
-            src={heroProducts}
+            src="/hero_products.png"
             alt="EGC Premium Cosmetic Products — Laboratory Scene"
           />
           {/* Blending overlays — order matters for z-index stacking */}
