@@ -726,7 +726,7 @@ export const SERVICES_DATA = [
     },
     formulationSections: [
       {
-        image: 'fac_turnkey',
+        image: 'turnkey_project',
         title: 'Site Selection, Feasibility & Engineering Design',
         desc: 'The success of every manufacturing project begins with selecting the right location and developing a robust engineering plan. Our feasibility studies evaluate land suitability, utility availability, logistics accessibility, workforce availability, and regulatory considerations. Our engineering teams then develop detailed facility layouts, manufacturing process flows, utility integration plans, and quality control laboratory designs.',
         bullets: [
@@ -739,7 +739,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        image: 'fac_industrial',
+        image: 'turnkey_construction',
         title: 'Approvals, Construction & Contractor Coordination',
         desc: 'We support regulatory submissions, municipal approvals, environmental compliance planning, and infrastructure clearances. Our project management teams coordinate architects, civil contractors, mechanical contractors, electrical contractors, utility vendors, and project consultants to ensure execution remains aligned with approved engineering plans.',
         bullets: [
@@ -752,7 +752,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        image: 'fac_cosmetic',
+        image: 'turnkey_handover',
         title: 'Machinery Selection, Installation & Pipeline Engineering',
         desc: 'Equipment decisions directly influence productivity, product quality, manufacturing efficiency, and future scalability. We support vendor evaluation, procurement assistance, technical reviews, and installation planning. We also oversee pipeline engineering, utility distribution systems, pressure testing, and leak detection.',
         bullets: [
@@ -765,7 +765,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        image: 'formulation_commercial',
+        image: 'turnkey_training',
         title: 'Commercial Trial Batch Validation & Operational Readiness',
         desc: 'Before commercial production begins, facilities must demonstrate manufacturing capability. Our validation activities bridge the gap between construction completion and commercial manufacturing — covering trial batch production, process optimization, equipment performance verification, and product consistency assessment.',
         bullets: [

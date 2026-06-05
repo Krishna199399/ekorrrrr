@@ -49,6 +49,10 @@ import plantLayoutImg from '../../assets/plant_layout.png';
 import plantUtilityImg from '../../assets/plant_utility.png';
 import plantEquipInstallImg from '../../assets/plant_equipment_install.png';
 import plantCommissioningImg from '../../assets/plant_commissioning.png';
+import turnkeyProjectImg from '../../assets/turnkey_project.png';
+import turnkeyConstructionImg from '../../assets/turnkey_construction.png';
+import turnkeyHandoverImg from '../../assets/turnkey_handover.png';
+import turnkeyTrainingImg from '../../assets/turnkey_training.png';
 
 // Map categories to their corresponding generated images
 const categoryImages = {
@@ -109,6 +113,10 @@ const SERVICE_IMAGES = {
   'plant_utility':            plantUtilityImg,
   'plant_equipment_install':  plantEquipInstallImg,
   'plant_commissioning':      plantCommissioningImg,
+  'turnkey_project':          turnkeyProjectImg,
+  'turnkey_construction':     turnkeyConstructionImg,
+  'turnkey_handover':         turnkeyHandoverImg,
+  'turnkey_training':         turnkeyTrainingImg,
 };
 
 // Legacy index fallback map (used when sec.image is not set)
