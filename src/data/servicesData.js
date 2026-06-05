@@ -976,7 +976,7 @@ export const SERVICES_DATA = [
     },
     formulationSections: [
       {
-        image: 'fac_boutique',
+        image: 'pl_formulation',
         title: 'OEM & ODM Manufacturer Identification, Qualification & Due Diligence',
         desc: 'Not all manufacturers are suitable for every brand. Our sourcing process identifies manufacturing partners based on product categories, production capacity, quality systems, regulatory compliance, market focus, geographic requirements, and technology capabilities. Before entering commercial agreements, we conduct comprehensive manufacturer qualification — including manufacturing capability reviews, compliance evaluations, quality system reviews, production capacity assessments, and operational risk analysis.',
         bullets: [
@@ -989,7 +989,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        image: 'fac_industrial',
+        image: 'pl_filling',
         title: 'Supplier Risk Assessment, GMP Audits & Facility Capacity Reviews',
         desc: 'Beyond technical capability, manufacturing partners must demonstrate business stability and operational consistency. Our supplier risk assessments evaluate reliability, capacity utilization, quality performance, business continuity, and supply chain resilience. Our GMP audit programs evaluate facility infrastructure, production systems, documentation practices, personnel controls, hygiene programs, and quality assurance systems to ensure manufacturers meet expected operational standards.',
         bullets: [
@@ -1002,7 +1002,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        image: 'formulation_commercial',
+        image: 'pl_labeling',
         title: 'Cost Optimization, Commercial Negotiations & MOQ Strategy',
         desc: 'Manufacturing costs significantly influence long-term profitability. We assist with cost of goods analysis, vendor benchmarking, pricing negotiations, MOQ optimization, production cost reviews, and contract evaluations to improve margins and strengthen supplier relationships. For businesses managing minimum order requirements, we provide MOQ negotiation support, production planning, inventory optimization, and growth forecasting to help brands scale sustainably.',
         bullets: [
@@ -1015,7 +1015,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        image: 'fac_cosmetic',
+        image: 'pl_quality',
         title: 'Manufacturing Agreement Support, Production Oversight & Quality Assurance',
         desc: 'Successful partnerships require clear expectations. We help businesses review manufacturing agreements, production commitments, quality responsibilities, delivery expectations, and performance standards. Our experts oversee initial commercial production runs — monitoring manufacturing execution, batch consistency, quality reviews, documentation verification, and product release readiness. Ongoing quality assurance programs then protect product quality and brand reputation throughout the manufacturing relationship.',
         bullets: [
@@ -1224,7 +1224,7 @@ export const SERVICES_DATA = [
     },
     formulationSections: [
       {
-        image: 'rd_shelves',
+        image: 'reg_dossier',
         title: 'FDA Registration & MoCRA Compliance | EU CPNP Notification & Responsible Person Support',
         desc: 'We support FDA facility registration guidance, MoCRA listing support, product compliance reviews, and documentation preparation for US market entry. For European markets, we provide CPNP notification preparation, product documentation reviews, ingredient compliance evaluation, regulatory coordination, and Responsible Person communication and documentation management to streamline EU market access.',
         bullets: [
@@ -1237,7 +1237,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        image: 'formulation_prototype',
+        image: 'reg_safety',
         title: 'CDSCO Regulatory Documentation & Product Information File Development',
         desc: 'Our CDSCO support covers manufacturing license documentation, import registration documentation, regulatory readiness reviews, and compliance assessments for businesses operating in India. We also assist with the complete development of Product Information Files — compiling product documentation, formula records, manufacturing information, product specifications, technical data, and compliance documentation management.',
         bullets: [
@@ -1250,7 +1250,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        image: 'formulation_ingredient',
+        image: 'reg_labeling',
         title: 'Cosmetic Safety Assessment | Ingredient & Formula Compliance Reviews',
         desc: 'Our safety assessment support includes ingredient evaluations, product safety reviews, risk assessments, and regulatory data reviews to help businesses demonstrate responsible product development practices. We also conduct formula compliance evaluations focusing on restricted ingredients, prohibited ingredients, market-specific compliance considerations, and product claim assessments to reduce risks associated with international expansion.',
         bullets: [
@@ -1263,7 +1263,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        image: 'formulation_commercial',
+        image: 'reg_audit',
         title: 'Labeling & Claims Compliance | Regulatory Risk Management & Global Market Access',
         desc: 'We support label reviews, product claims assessments, and regulatory documentation alignment to ensure market-ready communication. Our regulatory risk management and gap analysis identifies documentation gaps, ingredient compliance risks, labeling concerns, and manufacturing compliance readiness before market entry. We support expansion across the US, EU, India, Middle East, Africa, and Asia Pacific markets.',
         bullets: [
@@ -1470,7 +1470,7 @@ export const SERVICES_DATA = [
     },
     formulationSections: [
       {
-        image: 'formulation_commercial',
+        image: 'dpr_report',
         title: 'Detailed Project Report Preparation & Capital Expenditure Planning',
         desc: 'Our DPRs are designed to support bank loan applications, investor presentations, venture capital discussions, government subsidy programs, manufacturing expansion projects, and Greenfield manufacturing investments. DPR components include executive summary, industry analysis, market assessment, technical feasibility, manufacturing strategy, financial modeling, risk assessment, profitability analysis, and expansion roadmaps. CapEx planning covers land costs, factory construction, cleanroom infrastructure, HVAC, machinery, laboratory setup, utility infrastructure, and quality control facilities.',
         bullets: [
@@ -1483,7 +1483,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        image: 'fac_boutique',
+        image: 'dpr_market',
         title: 'Operating Expenditure Forecasting, ROI, IRR & Break Even Analysis',
         desc: 'Operational costs directly impact profitability and investor confidence. We develop financial forecasts covering raw materials, packaging, utilities, workforce, maintenance, regulatory expenses, marketing, and distribution. Our financial analysis includes payback period calculations, return on investment analysis, internal rate of return calculations, break even analysis, cash flow projections, and profitability forecasting to help stakeholders evaluate project attractiveness and financial sustainability.',
         bullets: [
@@ -1496,7 +1496,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        image: 'formulation_bespoke',
+        image: 'dpr_finance',
         title: 'Cosmetic Manufacturing Feasibility Studies, Market Research & Competitive Intelligence',
         desc: 'Feasibility assessments evaluate market demand, industry trends, competitive landscape, manufacturing economics, resource availability, investment requirements, and growth potential — reducing risk before capital deployment. Our market research studies evaluate regional demand trends, consumer behavior, competitor positioning, product categories, pricing structures, distribution channels, and market gaps to support stronger strategic planning and product positioning.',
         bullets: [
@@ -1509,7 +1509,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        image: 'rd_shelves',
+        image: 'dpr_strategy',
         title: 'Financial Modeling, Government Subsidy Planning & Bank Loan Readiness',
         desc: 'Our financial models evaluate best case, base case, and conservative forecasts — covering capacity utilization, margin projections, working capital, and expansion opportunities. We also help identify government subsidy programs, assess project eligibility, and support documentation planning. For funding readiness, we assist with bank funding reports, investment presentations, financial models, project summaries, risk analysis reports, and business planning documentation.',
         bullets: [
@@ -1718,7 +1718,7 @@ export const SERVICES_DATA = [
     },
     formulationSections: [
       {
-        image: 'rd_scientist',
+        image: 'recruit_interview',
         title: 'Senior Cosmetic Chemist & Formulation Scientist Recruitment',
         desc: 'Product innovation begins with experienced formulation professionals. We help recruit senior cosmetic chemists, formulation scientists, product development managers, R&D heads, innovation leaders, and technical directors. Key evaluation areas include formulation expertise, ingredient knowledge, product development experience, regulatory awareness, and commercialization experience. For formulation scientists, we support hiring across skincare, hair care, body care, color cosmetics, herbal formulations, and functional beauty product categories.',
         bullets: [
@@ -1731,7 +1731,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        image: 'fac_cosmetic',
+        image: 'recruit_assessment',
         title: 'Manufacturing & Plant Operations | Cleanroom Personnel Recruitment',
         desc: 'Manufacturing performance depends on skilled operational personnel. We help recruit plant managers, production managers, manufacturing supervisors, process engineers, maintenance managers, and operations leaders. For production floors, we source batch mixers, plant operators, utility operators, filling line operators, packaging technicians, and production associates. For controlled manufacturing environments, we recruit cleanroom supervisors, cleanroom leads, production technicians, environmental monitoring personnel, and GMP production staff.',
         bullets: [
@@ -1744,7 +1744,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        image: 'formulation_prototype',
+        image: 'recruit_onboarding',
         title: 'Quality Assurance, Quality Control & Regulatory Affairs Recruitment',
         desc: 'Quality systems and regulatory readiness depend on experienced professionals. We support recruitment for QA managers, QC analysts, microbiologists, validation specialists, documentation coordinators, and compliance officers to help organizations strengthen their quality culture. For regulatory affairs, we source regulatory affairs managers, compliance specialists, documentation experts, product registration professionals, and regulatory coordinators to support long-term compliance readiness.',
         bullets: [
@@ -1757,7 +1757,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        image: 'rd_scientist',
+        image: 'recruit_team',
         title: 'Talent Gap Assessment, SOP Training & Leadership Recruitment',
         desc: 'As businesses expand, workforce planning and talent gap assessment become increasingly important. We evaluate current workforce capabilities, skill gaps, future hiring requirements, department structures, leadership needs, and expansion readiness. Our technical competency interviews assess scientific knowledge, manufacturing experience, GMP understanding, and problem-solving skills. We also support SOP-based training programs covering GMP practices, production procedures, quality systems, and equipment operation — plus leadership recruitment of R&D directors, plant heads, manufacturing leaders, and quality directors.',
         bullets: [

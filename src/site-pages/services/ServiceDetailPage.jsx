@@ -53,6 +53,22 @@ import turnkeyProjectImg from '../../assets/turnkey_project.png';
 import turnkeyConstructionImg from '../../assets/turnkey_construction.png';
 import turnkeyHandoverImg from '../../assets/turnkey_handover.png';
 import turnkeyTrainingImg from '../../assets/turnkey_training.png';
+import plFormulationImg from '../../assets/pl_formulation.png';
+import plFillingImg from '../../assets/pl_filling.png';
+import plLabelingImg from '../../assets/pl_labeling.png';
+import plQualityImg from '../../assets/pl_quality.png';
+import regDossierImg from '../../assets/reg_dossier.png';
+import regSafetyImg from '../../assets/reg_safety.png';
+import regLabelingImg from '../../assets/reg_labeling.png';
+import regAuditImg from '../../assets/reg_audit.png';
+import dprReportImg from '../../assets/dpr_report.png';
+import dprMarketImg from '../../assets/dpr_market.png';
+import dprFinanceImg from '../../assets/dpr_finance.png';
+import dprStrategyImg from '../../assets/dpr_strategy.png';
+import recruitInterviewImg from '../../assets/recruit_interview.png';
+import recruitAssessmentImg from '../../assets/recruit_assessment.png';
+import recruitOnboardingImg from '../../assets/recruit_onboarding.png';
+import recruitTeamImg from '../../assets/recruit_team.png';
 
 // Map categories to their corresponding generated images
 const categoryImages = {
@@ -117,6 +133,22 @@ const SERVICE_IMAGES = {
   'turnkey_construction':     turnkeyConstructionImg,
   'turnkey_handover':         turnkeyHandoverImg,
   'turnkey_training':         turnkeyTrainingImg,
+  'pl_formulation':           plFormulationImg,
+  'pl_filling':               plFillingImg,
+  'pl_labeling':              plLabelingImg,
+  'pl_quality':               plQualityImg,
+  'reg_dossier':              regDossierImg,
+  'reg_safety':               regSafetyImg,
+  'reg_labeling':             regLabelingImg,
+  'reg_audit':                regAuditImg,
+  'dpr_report':               dprReportImg,
+  'dpr_market':               dprMarketImg,
+  'dpr_finance':              dprFinanceImg,
+  'dpr_strategy':             dprStrategyImg,
+  'recruit_interview':        recruitInterviewImg,
+  'recruit_assessment':       recruitAssessmentImg,
+  'recruit_onboarding':       recruitOnboardingImg,
+  'recruit_team':             recruitTeamImg,
 };
 
 // Legacy index fallback map (used when sec.image is not set)
