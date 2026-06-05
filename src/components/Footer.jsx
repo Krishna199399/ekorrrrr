@@ -137,15 +137,12 @@ export default function Footer() {
           
           {/* Logo & Description */}
           <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start' }}>
               <img 
                 src="/logo_white.png"
                 alt="EGC Logo" 
                 style={{ height: '42px', width: 'auto', display: 'block' }} 
               />
-              <span style={{ fontSize: '8px', color: 'rgba(255, 255, 255, 0.6)', textTransform: 'uppercase', letterSpacing: '1.2px', fontWeight: '700', marginTop: '2px', fontFamily: 'Outfit, sans-serif' }}>
-                Ekora Global Consulting
-              </span>
             </div>
             
             <p style={{ lineHeight: '1.5', color: 'rgba(255,255,255,0.5)' }}>

@@ -1,9 +1,9 @@
-import AboutPage from '../../src/pages/AboutPage';
+import AboutPage from '../../src/site-pages/AboutPage';
 
 export const metadata = {
-  title: 'About EGC Ekora Global Consulting LLP | Cosmetic Consulting Company',
+  title: 'About EGC Ekora Global Consulting | Cosmetic Industrial Consultants',
   description:
-    'Learn about EGC Ekora Global Consulting LLP, a cosmetic consulting company specializing in cosmetic product development, formulation support, manufacturing consultation, and end-to-end beauty industry solutions.',
+    'Learn about EGC Ekora Global Consulting, a cosmetic industrial consulting company supporting product development, manufacturing, factory setup, compliance, and growth strategies for beauty businesses worldwide.',
 };
 
 export default function AboutUs() {

@@ -1,4 +1,4 @@
-import ProductsPage from '../../src/pages/ProductsPage';
+import ProductsPage from '../../src/site-pages/ProductsPage';
 
 export const metadata = {
   title: 'Product Expertise | EGC — Skincare, Haircare, Colour & Luxury Cosmetics',

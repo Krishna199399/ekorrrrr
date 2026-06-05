@@ -6,6 +6,7 @@ import GlobalMarkets from '../src/components/GlobalMarkets';
 import ResearchInnovation from '../src/components/ResearchInnovation';
 import FactorySetup from '../src/components/FactorySetup';
 import Testimonials from '../src/components/Testimonials';
+import FAQ from '../src/components/FAQ';
 import ContactForm from '../src/components/ContactForm';
 
 export const metadata = {
@@ -25,6 +26,7 @@ export default function HomePage() {
       <ResearchInnovation />
       <FactorySetup />
       <Testimonials />
+      <FAQ />
       <ContactForm />
     </>
   );

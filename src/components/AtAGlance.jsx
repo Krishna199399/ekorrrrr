@@ -83,13 +83,13 @@ export default function AtAGlance() {
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', color: '#5c526b', fontSize: '15px', lineHeight: '1.6' }}>
               <p>
-                <strong>Founded by cosmetic scientists and cleanroom engineering pioneers</strong>, EGC Ekora Global Consulting bridges the gap between innovative product development and high-volume, GMP-compliant manufacturing environments.
+                <strong>Founded by entrepreneurs passionate about advancing the beauty and personal care industry</strong>, EGC Ekora Global Consulting was created to help businesses transform ideas into commercially successful products, manufacturing operations, and scalable beauty brands.
               </p>
               <p>
-                We don't just formulate cosmetic products. We help businesses build scalable beauty brands through formulation science, manufacturing strategy, regulatory guidance, commercialization planning, and operational excellence.
+                We combine product development expertise, manufacturing insight, regulatory understanding, and commercialization strategy to support businesses across every stage of growth.
               </p>
               <p>
-                From product development and ingredient research to factory planning, manufacturing scale-up, and international market readiness, we work closely with cosmetic brands, startups, manufacturers, wellness companies, private label businesses, and global beauty operators.
+                From concept creation and formulation development to factory planning, production scale-up, and global market expansion, we partner with cosmetic brands, startups, manufacturers, wellness companies, private label businesses, and international beauty operators.
               </p>
             </div>
             
@@ -102,8 +102,8 @@ export default function AtAGlance() {
               borderRadius: '0 8px 8px 0',
               boxShadow: '0 5px 15px rgba(27,11,48,0.02)'
             }}>
-              <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '16px', color: '#1b0b30', lineHeight: 1.4 }}>
-                "A cosmetic product is the perfect harmony of biochemical precision, aesthetic quality, and scalable manufacturing."
+              <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '16px', color: '#1b0b30', lineHeight: 1.4, margin: 0 }}>
+                "A successful cosmetic product is where innovation, quality, and manufacturing excellence come together."
               </p>
             </div>
           </div>
@@ -139,7 +139,7 @@ export default function AtAGlance() {
               }}
             >
               <img
-                src="/photo_2026-05-30_02-09-12.jpg"
+                src="/egc_collage.png"
                 alt="EGC Cosmetic Science — products, laboratory and factory blueprint collage"
                 style={{
                   position: 'absolute',
@@ -160,6 +160,41 @@ export default function AtAGlance() {
                   'linear-gradient(to bottom, transparent 65%, rgba(27,11,48,0.10) 100%)',
                 pointerEvents: 'none',
               }} />
+
+              {/* Floating Quote Card overlay */}
+              <div style={{
+                position: 'absolute',
+                bottom: '30px',
+                right: '30px',
+                width: '280px',
+                background: '#ffffff',
+                border: '1.5px solid rgba(181, 137, 59, 0.4)',
+                borderRadius: '16px',
+                padding: '24px 20px',
+                boxShadow: '0 10px 30px rgba(27,11,48,0.12)',
+                zIndex: 10,
+                textAlign: 'left'
+              }} className="glance-quote-card">
+                <span style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: '48px',
+                  lineHeight: '0.1',
+                  color: '#b5893b',
+                  display: 'block',
+                  marginBottom: '14px',
+                  opacity: 0.8
+                }}>“</span>
+                <p style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: '15.5px',
+                  color: '#1b0b30',
+                  lineHeight: '1.45',
+                  margin: 0,
+                  fontWeight: '500'
+                }}>
+                  A successful cosmetic product is where innovation, quality, and manufacturing excellence come together.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -254,6 +289,21 @@ export default function AtAGlance() {
           }
           .stat-card {
             padding: 18px 10px !important;
+          }
+        }
+        @media (max-width: 520px) {
+          .glance-quote-card {
+            width: calc(100% - 40px) !important;
+            right: 20px !important;
+            bottom: 20px !important;
+            padding: 16px 14px !important;
+          }
+          .glance-quote-card span {
+            font-size: 32px !important;
+            margin-bottom: 8px !important;
+          }
+          .glance-quote-card p {
+            font-size: 13.5px !important;
           }
         }
         @media (max-width: 480px) {

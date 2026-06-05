@@ -268,11 +268,15 @@ export default function Hero() {
             {/* Body copy */}
             <p style={{
               fontSize: '14.5px', lineHeight: '1.78', color: '#5c5069',
-              maxWidth: '380px', margin: 0,
+              maxWidth: '420px', margin: 0,
             }}>
-              We help cosmetic brands transform ideas into commercially successful
-              products through formulation science, manufacturing strategy, factory
-              planning, regulatory compliance, and business growth consulting.
+              We help cosmetic brands transform ideas into commercially successful products through formulation science, manufacturing strategy, factory planning, regulatory compliance, and business growth consulting.
+            </p>
+            <p style={{
+              fontSize: '14.5px', lineHeight: '1.78', color: '#5c5069',
+              maxWidth: '420px', margin: 0,
+            }}>
+              From innovative skincare formulations and personal care products to large-scale cosmetic manufacturing facilities, EGC Ekora Global Consulting partners with businesses at every stage of their journey—from concept development to commercial production and global market expansion.
             </p>
 
             {/* CTAs */}

@@ -1,4 +1,4 @@
-import PortfolioPage from '../../src/pages/PortfolioPage';
+import PortfolioPage from '../../src/site-pages/PortfolioPage';
 
 export const metadata = {
   title: 'Portfolio | EGC — Factory Setups & Cosmetic Manufacturing Projects',

@@ -1,4 +1,4 @@
-import ServicesPage from '../../src/pages/ServicesPage';
+import ServicesPage from '../../src/site-pages/ServicesPage';
 
 export const metadata = {
   title: 'Services | Ekora Global Consulting — Cosmetic Formulation & Factory Architecture',

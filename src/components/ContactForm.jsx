@@ -100,9 +100,11 @@ export default function ContactForm() {
               Get In Touch
             </span>
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '42px', color: '#1b0b30', fontWeight: '600', margin: 0, lineHeight: 1.2 }}>
-              Ready to Build Your
-              <br />Cosmetic Business?
+              Ready to Build Your Cosmetic Business?
             </h2>
+            <h3 style={{ fontSize: '20px', color: '#5c526b', fontWeight: '500', lineHeight: '1.5', maxWidth: '560px', margin: 0 }}>
+              Let's Create the Future of Beauty Together
+            </h3>
             <p style={{ fontSize: '16px', color: '#5c526b', lineHeight: '1.6', maxWidth: '560px', margin: 0 }}>
               Whether you're launching a brand, developing products, planning a factory, or expanding globally, our cosmetic industrial consultants are here to help.
             </p>

@@ -1,4 +1,4 @@
-import RdLabPage from '../../src/pages/RdLabPage';
+import RdLabPage from '../../src/site-pages/RdLabPage';
 
 export const metadata = {
   title: 'R&D Lab | EGC — Cosmetic Research & Formulation Innovation',

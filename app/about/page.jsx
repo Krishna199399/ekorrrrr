@@ -1,4 +1,4 @@
-import AboutPage from '../../src/pages/AboutPage';
+import AboutPage from '../../src/site-pages/AboutPage';
 
 export const metadata = {
   title: 'About EGC Ekora Global Consulting LLP | Cosmetic Consulting Company',
